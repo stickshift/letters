@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 Andrew Young. All rights reserved.
 //
 
-#import <Expecta/Expecta.h>
-#import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
+#import "LettersTestCase.h"
 #import "Script.h"
 
-@interface ScriptTests : XCTestCase @end
+@interface ScriptTests : LettersTestCase @end
 @implementation ScriptTests
 
 - (void)testLines
@@ -40,13 +38,6 @@
     expect([script nextLine]).to.equal(line2);
     expect([script nextLine]).to.equal(line3);
     expect([script nextLine]).to.beNil();
-}
-
-- (void) setUp
-{
-    [super setUp];
-    
-    self.continueAfterFailure = NO;
 }
 
 @end
