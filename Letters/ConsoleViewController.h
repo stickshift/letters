@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ConsoleViewController.h
 //  Letters
 //
 //  Created by Andrew Young on 7/29/15.
@@ -14,7 +14,7 @@
 /**
  * Starts playing a script on the Console
  */
-- (void) playScript:(Script*)script;
+- (void) playScript:(Script*)script onCompletion:(void (^)(void))finished;
 
 @end
 
