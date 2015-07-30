@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		47163BEAF73D4403168DE27C /* libPods-LettersTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 709744EEBA6C667D0CE721F3 /* libPods-LettersTests.a */; };
+		4E5AB8151B6A8E4500E9C0A2 /* ScriptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AB8141B6A8E4500E9C0A2 /* ScriptTests.m */; };
+		4E5AB8181B6A8ED700E9C0A2 /* Script.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AB8171B6A8ED700E9C0A2 /* Script.m */; };
 		4E84C3EF1B69D4FC003DE2B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E84C3EE1B69D4FC003DE2B2 /* main.m */; };
 		4E84C3F21B69D4FC003DE2B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E84C3F11B69D4FC003DE2B2 /* AppDelegate.m */; };
-		4E84C3F51B69D4FC003DE2B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E84C3F41B69D4FC003DE2B2 /* ViewController.m */; };
+		4E84C3F51B69D4FC003DE2B2 /* ConsoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E84C3F41B69D4FC003DE2B2 /* ConsoleViewController.m */; };
 		4E84C3F81B69D4FD003DE2B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E84C3F61B69D4FD003DE2B2 /* Main.storyboard */; };
 		4E84C3FA1B69D4FD003DE2B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E84C3F91B69D4FD003DE2B2 /* Images.xcassets */; };
 		4E84C3FD1B69D4FD003DE2B2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E84C3FB1B69D4FD003DE2B2 /* LaunchScreen.xib */; };
-		4E84C4091B69D4FD003DE2B2 /* LettersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E84C4081B69D4FD003DE2B2 /* LettersTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,19 +30,21 @@
 
 /* Begin PBXFileReference section */
 		3B7F64DDA380488B230AB49B /* Pods-LettersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LettersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LettersTests/Pods-LettersTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E5AB8141B6A8E4500E9C0A2 /* ScriptTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptTests.m; sourceTree = "<group>"; };
+		4E5AB8161B6A8ED700E9C0A2 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Script.h; sourceTree = "<group>"; };
+		4E5AB8171B6A8ED700E9C0A2 /* Script.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Script.m; sourceTree = "<group>"; };
 		4E84C3E91B69D4FC003DE2B2 /* Letters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Letters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84C3ED1B69D4FC003DE2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E84C3EE1B69D4FC003DE2B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4E84C3F01B69D4FC003DE2B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4E84C3F11B69D4FC003DE2B2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4E84C3F31B69D4FC003DE2B2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4E84C3F41B69D4FC003DE2B2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4E84C3F31B69D4FC003DE2B2 /* ConsoleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsoleViewController.h; sourceTree = "<group>"; };
+		4E84C3F41B69D4FC003DE2B2 /* ConsoleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConsoleViewController.m; sourceTree = "<group>"; };
 		4E84C3F71B69D4FD003DE2B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E84C3F91B69D4FD003DE2B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4E84C3FC1B69D4FD003DE2B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4E84C4021B69D4FD003DE2B2 /* LettersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LettersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E84C4071B69D4FD003DE2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E84C4081B69D4FD003DE2B2 /* LettersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LettersTests.m; sourceTree = "<group>"; };
 		709744EEBA6C667D0CE721F3 /* libPods-LettersTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LettersTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8019DE3F913364AB9FBF8476 /* Pods-LettersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LettersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LettersTests/Pods-LettersTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,10 +100,12 @@
 		4E84C3EB1B69D4FC003DE2B2 /* Letters */ = {
 			isa = PBXGroup;
 			children = (
+				4E84C3F31B69D4FC003DE2B2 /* ConsoleViewController.h */,
+				4E84C3F41B69D4FC003DE2B2 /* ConsoleViewController.m */,
+				4E5AB8161B6A8ED700E9C0A2 /* Script.h */,
+				4E5AB8171B6A8ED700E9C0A2 /* Script.m */,
 				4E84C3F01B69D4FC003DE2B2 /* AppDelegate.h */,
 				4E84C3F11B69D4FC003DE2B2 /* AppDelegate.m */,
-				4E84C3F31B69D4FC003DE2B2 /* ViewController.h */,
-				4E84C3F41B69D4FC003DE2B2 /* ViewController.m */,
 				4E84C3F61B69D4FD003DE2B2 /* Main.storyboard */,
 				4E84C3F91B69D4FD003DE2B2 /* Images.xcassets */,
 				4E84C3FB1B69D4FD003DE2B2 /* LaunchScreen.xib */,
@@ -121,7 +126,7 @@
 		4E84C4051B69D4FD003DE2B2 /* LettersTests */ = {
 			isa = PBXGroup;
 			children = (
-				4E84C4081B69D4FD003DE2B2 /* LettersTests.m */,
+				4E5AB8141B6A8E4500E9C0A2 /* ScriptTests.m */,
 				4E84C4061B69D4FD003DE2B2 /* Supporting Files */,
 			);
 			path = LettersTests;
@@ -278,7 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E84C3F51B69D4FC003DE2B2 /* ViewController.m in Sources */,
+				4E5AB8181B6A8ED700E9C0A2 /* Script.m in Sources */,
+				4E84C3F51B69D4FC003DE2B2 /* ConsoleViewController.m in Sources */,
 				4E84C3F21B69D4FC003DE2B2 /* AppDelegate.m in Sources */,
 				4E84C3EF1B69D4FC003DE2B2 /* main.m in Sources */,
 			);
@@ -288,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E84C4091B69D4FD003DE2B2 /* LettersTests.m in Sources */,
+				4E5AB8151B6A8E4500E9C0A2 /* ScriptTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Script.h"
 
-@interface ViewController : UIViewController
+@interface ConsoleViewController : UIViewController
 
+/**
+ * Starts playing a script on the Console
+ */
+- (void) playScript:(Script*)script;
 
 @end
 
