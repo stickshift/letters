@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ConsoleViewController.h"
 
 // Constants
 #define TAG @"AppDelegate"
@@ -22,18 +21,6 @@ static BOOL isRunningTests();
     {
         NSLog(@"%@ - Aborting initialization since we're running test suite", TAG);
         return YES;
-    }
-
-    // Create a simple script
-    Script* script = [[Script alloc] init];
-    [script addLine:@"HELLO"];
-    [script addLine:@"WOULD YOU TEACH ME TO DRAW MY LETTERS?"];
-    [script addConfirmationRequest];
-    
-    UIViewController* viewController = self.window.rootViewController;
-    if ([viewController isKindOfClass:[ConsoleViewController class]])
-    {
-        [(ConsoleViewController*)viewController setScript:script];
     }
     
     return YES;

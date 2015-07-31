@@ -60,6 +60,7 @@
     self.lineHeight = ceil(bounds.size.height);
 
     // Initialize the textView
+    self.textView.editable = NO;    
     self.textView.text = self.buffer;
     
     // Play a script if we have one
