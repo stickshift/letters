@@ -11,10 +11,12 @@
 
 @interface ConsoleViewController : UIViewController
 
+@property (nonatomic) Script* script;
+
 /**
  * Starts playing a script on the Console
  */
-- (void) playScript:(Script*)script onCompletion:(void (^)(void))finished;
+- (void) playAndThen:(void (^)(void))finished;
 
 @end
 

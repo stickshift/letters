@@ -23,18 +23,16 @@ static BOOL isRunningTests();
         NSLog(@"%@ - Aborting initialization since we're running test suite", TAG);
         return YES;
     }
-    
+
     // Create a simple script
     Script* script = [[Script alloc] init];
     [script addLine:@"HELLO"];
-    [script addLine:@"WOULD YOU BE MY FRIEND?"];
+    [script addLine:@"WOULD YOU LIKE TO PLAY A GAME?"];
+    [script addLine:@"HOW ABOUT GLOBAL THERMONUCLEAR WAR?"];
     
-    // Initialize the view controller
-    ConsoleViewController* consoleViewController = (ConsoleViewController*)[self.window rootViewController];
+    ConsoleViewController* viewController = (ConsoleViewController*)[self.window rootViewController];
+    viewController.script = script;
     
-    // Play the script
-    [consoleViewController playScript:script onCompletion:nil];
-
     return YES;
 }
 

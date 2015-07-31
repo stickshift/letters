@@ -14,6 +14,7 @@
 {
     [super setUp];
     
+    // Abort on first assertion failure
     self.continueAfterFailure = NO;
 }
 

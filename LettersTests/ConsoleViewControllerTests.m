@@ -28,14 +28,16 @@
     
     // Initialize the view controller
     ConsoleViewController* consoleViewController = [storyBoard instantiateInitialViewController];
-
+    [consoleViewController view];
+    
     // Play the script
-    [consoleViewController playScript:script onCompletion:^{
+    consoleViewController.script = script;
+    [consoleViewController playAndThen:^{
         scriptCompleted = YES;
     }];
     
     // Verify script completed
-    expect(scriptCompleted).will.beTruthy();
+    expect(scriptCompleted).after(30).to.beTruthy();
 }
 
 @end
