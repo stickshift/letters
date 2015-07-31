@@ -15,6 +15,7 @@
 		4E31152A1B6BB0CA00988EDE /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115261B6BB0CA00988EDE /* clear@2x.png */; };
 		4E31152D1B6BB1A000988EDE /* chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E31152B1B6BB1A000988EDE /* chalkboard.png */; };
 		4E31152E1B6BB1A000988EDE /* chalkboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E31152C1B6BB1A000988EDE /* chalkboard@2x.png */; };
+		4E3115311B6C2AC400988EDE /* ChalkboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3115301B6C2AC400988EDE /* ChalkboardViewController.m */; };
 		4E5AB8151B6A8E4500E9C0A2 /* ScriptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AB8141B6A8E4500E9C0A2 /* ScriptTests.m */; };
 		4E5AB8181B6A8ED700E9C0A2 /* Script.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AB8171B6A8ED700E9C0A2 /* Script.m */; };
 		4E5AB81A1B6AD7D200E9C0A2 /* ConsoleViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AB8191B6AD7D200E9C0A2 /* ConsoleViewControllerTests.m */; };
@@ -46,6 +47,8 @@
 		4E3115261B6BB0CA00988EDE /* clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clear@2x.png"; path = "Letters/Resources/clear@2x.png"; sourceTree = "<group>"; };
 		4E31152B1B6BB1A000988EDE /* chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chalkboard.png; path = Letters/Resources/chalkboard.png; sourceTree = "<group>"; };
 		4E31152C1B6BB1A000988EDE /* chalkboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chalkboard@2x.png"; path = "Letters/Resources/chalkboard@2x.png"; sourceTree = "<group>"; };
+		4E31152F1B6C2AC400988EDE /* ChalkboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChalkboardViewController.h; sourceTree = "<group>"; };
+		4E3115301B6C2AC400988EDE /* ChalkboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChalkboardViewController.m; sourceTree = "<group>"; };
 		4E5AB8141B6A8E4500E9C0A2 /* ScriptTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptTests.m; sourceTree = "<group>"; };
 		4E5AB8161B6A8ED700E9C0A2 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Script.h; sourceTree = "<group>"; };
 		4E5AB8171B6A8ED700E9C0A2 /* Script.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Script.m; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 			children = (
 				4E84C3F31B69D4FC003DE2B2 /* ConsoleViewController.h */,
 				4E84C3F41B69D4FC003DE2B2 /* ConsoleViewController.m */,
+				4E31152F1B6C2AC400988EDE /* ChalkboardViewController.h */,
+				4E3115301B6C2AC400988EDE /* ChalkboardViewController.m */,
 				4E5AB8161B6A8ED700E9C0A2 /* Script.h */,
 				4E5AB8171B6A8ED700E9C0A2 /* Script.m */,
 				4E84C3F01B69D4FC003DE2B2 /* AppDelegate.h */,
@@ -330,6 +335,7 @@
 			files = (
 				4E5AB8181B6A8ED700E9C0A2 /* Script.m in Sources */,
 				4E84C3F51B69D4FC003DE2B2 /* ConsoleViewController.m in Sources */,
+				4E3115311B6C2AC400988EDE /* ChalkboardViewController.m in Sources */,
 				4E84C3F21B69D4FC003DE2B2 /* AppDelegate.m in Sources */,
 				4E84C3EF1B69D4FC003DE2B2 /* main.m in Sources */,
 			);

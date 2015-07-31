@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nJv-JX-Qz2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,7 +8,7 @@
         <!--Console View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ConsoleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="consoleViewController" id="vXZ-lx-hvc" customClass="ConsoleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -59,10 +59,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Chalkboard View Controller-->
         <scene sceneID="4C0-G4-gwS">
             <objects>
-                <viewController id="nJv-JX-Qz2" sceneMemberID="viewController">
+                <viewController id="nJv-JX-Qz2" customClass="ChalkboardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wWe-3u-NuR"/>
                         <viewControllerLayoutGuide type="bottom" id="ndT-Tt-XWa"/>
@@ -71,6 +71,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-Gl-hLl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWA-87-I2D">
                                 <rect key="frame" x="16" y="507" width="44" height="44"/>
                                 <constraints>
@@ -115,13 +118,20 @@
                             <constraint firstItem="WEl-vV-dNa" firstAttribute="trailing" secondItem="kj6-a6-oyf" secondAttribute="trailingMargin" id="Avv-OK-6bJ"/>
                             <constraint firstItem="Rmu-TG-VTQ" firstAttribute="top" secondItem="wWe-3u-NuR" secondAttribute="bottom" constant="8" id="Dle-Ta-Qvi"/>
                             <constraint firstItem="ndT-Tt-XWa" firstAttribute="top" secondItem="LWA-87-I2D" secondAttribute="bottom" constant="17" id="GrO-t0-ALs"/>
+                            <constraint firstItem="BaX-Gl-hLl" firstAttribute="top" secondItem="wWe-3u-NuR" secondAttribute="bottom" constant="-20" id="N0K-Uo-2PQ"/>
                             <constraint firstItem="ndT-Tt-XWa" firstAttribute="top" secondItem="WEl-vV-dNa" secondAttribute="bottom" constant="20" id="OOK-qs-MmC"/>
                             <constraint firstItem="Rmu-TG-VTQ" firstAttribute="trailing" secondItem="kj6-a6-oyf" secondAttribute="trailingMargin" id="fXj-9q-vJx"/>
                             <constraint firstItem="LWA-87-I2D" firstAttribute="leading" secondItem="kj6-a6-oyf" secondAttribute="leadingMargin" id="gnF-b3-Pf2"/>
+                            <constraint firstItem="BaX-Gl-hLl" firstAttribute="leading" secondItem="kj6-a6-oyf" secondAttribute="leadingMargin" constant="-16" id="jS2-tL-Y62"/>
+                            <constraint firstItem="ndT-Tt-XWa" firstAttribute="top" secondItem="BaX-Gl-hLl" secondAttribute="bottom" id="kny-T1-qcJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BaX-Gl-hLl" secondAttribute="trailing" constant="-16" id="loe-1e-GTu"/>
                             <constraint firstItem="Rmu-TG-VTQ" firstAttribute="centerY" secondItem="K81-3D-fTC" secondAttribute="centerY" constant="-5" id="qeJ-0a-wcu"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="imageView" destination="BaX-Gl-hLl" id="uy7-Wr-Y3I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBP-0x-Xd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

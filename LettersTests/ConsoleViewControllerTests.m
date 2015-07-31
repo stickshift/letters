@@ -26,7 +26,7 @@
     [script addLine:@"WOULD YOU BE MY FRIEND?"];
     
     // Initialize the view controller
-    ConsoleViewController* consoleViewController = [storyBoard instantiateInitialViewController];
+    ConsoleViewController* consoleViewController = [storyBoard instantiateViewControllerWithIdentifier:@"consoleViewController"];
     [consoleViewController view];
     
     // Play the script
@@ -52,7 +52,7 @@
     [script addLine:@"THANKS!"];
 
     // Initialize the view controller
-    ConsoleViewController* consoleViewController = [storyBoard instantiateInitialViewController];
+    ConsoleViewController* consoleViewController = [storyBoard instantiateViewControllerWithIdentifier:@"consoleViewController"];
     [consoleViewController view];
     
     // Play the script
