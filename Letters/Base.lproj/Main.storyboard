@@ -83,6 +83,9 @@
                                 <state key="normal" image="clear.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="erase:" destination="nJv-JX-Qz2" eventType="touchUpInside" id="cMg-PV-OI5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEl-vV-dNa">
                                 <rect key="frame" x="260" y="504" width="44" height="44"/>
@@ -93,6 +96,9 @@
                                 <state key="normal" image="check.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="submit:" destination="nJv-JX-Qz2" eventType="touchUpInside" id="MyS-m3-o5v"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chalkboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rmu-TG-VTQ">
                                 <rect key="frame" x="234" y="28" width="70" height="70"/>

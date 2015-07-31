@@ -34,6 +34,22 @@
 }
 
 /**
+ * @see ChalkboardViewController.h
+ */
+- (IBAction) erase:(id)sender
+{
+    self.imageView.image = nil;
+}
+
+/**
+ * @see ChalkboardViewController.h
+ */
+- (IBAction) submit:(id)sender
+{
+    
+}
+
+/**
  * Records start of stroke
  */
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

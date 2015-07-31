@@ -10,4 +10,14 @@
 
 @interface ChalkboardViewController : UIViewController
 
+/**
+ * Clears chalkboard
+ */
+- (IBAction) erase:(id)sender;
+
+/**
+ * Call when user is happy with drawing and ready to submit it
+ */
+- (IBAction) submit:(id)sender;
+
 @end
