@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Andrew Young. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "ConsoleViewController.h"
 
 // Constants
@@ -18,6 +19,7 @@
 
 @property dispatch_queue_t playingQueue;
 @property NSMutableString* buffer;
+@property AVAudioPlayer* typingSound;
 
 @property (weak, nonatomic) IBOutlet UITextView* textView;
 
@@ -32,6 +34,10 @@
     {
         self.playingQueue = dispatch_queue_create("playingQueue", DISPATCH_QUEUE_SERIAL);
         self.buffer = [NSMutableString stringWithString:BLOCK];
+        
+        NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
+        self.typingSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:NULL];
+        self.typingSound.numberOfLoops = -1;
     }
     return self;
 }
@@ -90,6 +96,7 @@
 {
     NSLog(@"%@ - Playing line '%@'", TAG, line);
 
+    [self.typingSound play];
     for (NSUInteger i = 0;i < line.length;i++)
     {
         // Insert each character from line into buffer
@@ -103,6 +110,7 @@
         // Delay between characters
         [NSThread sleepForTimeInterval:DELAY_BETWEEN_CHARACTERS];
     }
+    [self.typingSound stop];
 
     // Delay between lines
     [NSThread sleepForTimeInterval:DELAY_BETWEEN_LINES];
