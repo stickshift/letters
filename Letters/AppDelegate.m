@@ -28,7 +28,6 @@ static BOOL isRunningTests();
     Script* script = [[Script alloc] init];
     [script addLine:@"HELLO"];
     [script addLine:@"WOULD YOU LIKE TO PLAY A GAME?"];
-    [script addLine:@"HOW ABOUT GLOBAL THERMONUCLEAR WAR?"];
     
     ConsoleViewController* viewController = (ConsoleViewController*)[self.window rootViewController];
     viewController.script = script;

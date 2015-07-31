@@ -11,9 +11,9 @@
 
 // Constants
 #define TAG @"ConsoleViewController"
-#define BLOCK @"\u258B"
-#define DELAY_BETWEEN_CHARACTERS 0.1
-#define DELAY_BETWEEN_LINES 0.8
+#define BLOCK @"\u200A\u258B"
+#define DELAY_BETWEEN_CHARACTERS 0.07
+#define DELAY_BETWEEN_LINES 1.0
 
 @interface ConsoleViewController()
 
@@ -22,6 +22,7 @@
 @property AVAudioPlayer* typingSound;
 
 @property (weak, nonatomic) IBOutlet UITextView* textView;
+@property CGFloat lineHeight;
 
 @end
 
@@ -45,9 +46,17 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    // Calculate lineHeight
+    NSDictionary* attributes = @{ NSFontAttributeName: self.textView.font };
+    CGRect bounds = [@"H" boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:attributes
+                                       context:nil];
+    self.lineHeight = ceil(bounds.size.height);
+
     // Initialize the textView
-    [self updateView];
+    self.textView.text = self.buffer;
     
     // Play a script if we have one
     if (self.script)
@@ -77,10 +86,7 @@
             // Insert newline here so the last line doesn't get one
             if (line)
             {
-                [self.buffer insertString:@"\n" atIndex:self.buffer.length - 1];
-                
-                // Update the textView
-                [self updateView];
+                [self addString:@"\n"];
             }
         }
         
@@ -100,12 +106,7 @@
     for (NSUInteger i = 0;i < line.length;i++)
     {
         // Insert each character from line into buffer
-        unichar c = [line characterAtIndex:i];
-        [self.buffer insertString:[NSString stringWithCharacters:&c length:1]
-                          atIndex:self.buffer.length - 1];
-        
-        // Update the textView
-        [self updateView];
+        [self addCharacter:[line characterAtIndex:i]];
 
         // Delay between characters
         [NSThread sleepForTimeInterval:DELAY_BETWEEN_CHARACTERS];
@@ -117,13 +118,44 @@
 }
 
 /**
- * Updates textView on main thread
+ * Adds a single character to content
  */
-- (void) updateView
+- (void) addCharacter:(unichar)c
+{
+    [self addString:[NSString stringWithCharacters:&c length:1]];
+}
+
+/**
+ * Adds a whole string to content
+ */
+- (void) addString:(NSString*)s
 {
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.buffer insertString:s atIndex:self.buffer.length - 2];
+        
         self.textView.text = self.buffer;
+        
+        if ([self viewWillOverflow])
+        {
+            NSLog(@"%@ - Resetting console", TAG);
+            self.buffer = [NSMutableString stringWithFormat:@"%@%@", s, BLOCK];
+            self.textView.text = self.buffer;
+        }
     });
+}
+
+/**
+ * Utility that decides if UITextView is full
+ */
+- (BOOL) viewWillOverflow
+{
+    if (self.textView.frame.size.height - self.textView.contentSize.height < self.lineHeight)
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end
