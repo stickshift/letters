@@ -8,6 +8,9 @@
 
 #import "Script.h"
 
+// Constants
+#define CONFIRMATION_REQUEST_TOKEN @"REQUEST_CONFIRMATION"
+
 @interface Script()
 {
     NSMutableArray* _lines;
@@ -30,6 +33,16 @@
 - (void) addLine:(NSString*)line
 {
     [_lines addObject:line];
+}
+
++ (BOOL) isConfirmationRequest:(NSString*)line
+{
+    return [line isEqualToString:CONFIRMATION_REQUEST_TOKEN];
+}
+
+- (void) addConfirmationRequest
+{
+    [self addLine:CONFIRMATION_REQUEST_TOKEN];
 }
 
 - (NSString*) nextLine

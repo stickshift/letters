@@ -28,6 +28,13 @@ static BOOL isRunningTests();
     Script* script = [[Script alloc] init];
     [script addLine:@"HELLO"];
     [script addLine:@"WOULD YOU LIKE TO PLAY A GAME?"];
+    [script addConfirmationRequest];
+    [script addLine:@"HOW ABOUT A GAME OF CHESS?"];
+    [script addConfirmationRequest];
+    [script addLine:@"GREAT"];
+    [script addLine:@"I WILL BE BLACK"];
+    [script addLine:@"YOU WILL BE WHITE"];
+    [script addLine:@"DO YOU MIND IF I GO FIRST?"];
     
     ConsoleViewController* viewController = (ConsoleViewController*)[self.window rootViewController];
     viewController.script = script;

@@ -11,12 +11,24 @@
 
 @interface ConsoleViewController : UIViewController
 
+/** The script to play */
 @property (nonatomic) Script* script;
+
+/** TRUE if play is paused waiting for confirm to be called */
+@property (nonatomic, readonly) BOOL waitingForConfirmation;
+
+/** TRUE if the end of the script was reached */
+@property (nonatomic, readonly) BOOL finished;
 
 /**
  * Starts playing a script on the Console
  */
-- (void) playAndThen:(void (^)(void))finished;
+- (void) play;
+
+/**
+ * Confirms a question and lets play proceed.
+ */
+- (IBAction) confirm:(id)sender;
 
 @end
 

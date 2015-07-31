@@ -14,15 +14,19 @@
 #define BLOCK @"\u200A\u258B"
 #define DELAY_BETWEEN_CHARACTERS 0.07
 #define DELAY_BETWEEN_LINES 1.0
+#define DELAY_BETWEEN_CONFIRMATION_SAMPLES 0.5
 
 @interface ConsoleViewController()
 
 @property dispatch_queue_t playingQueue;
 @property NSMutableString* buffer;
 @property AVAudioPlayer* typingSound;
+@property BOOL confirmed;
 
 @property (weak, nonatomic) IBOutlet UITextView* textView;
 @property CGFloat lineHeight;
+
+@property (weak, nonatomic) IBOutlet UIButton* confirmButton;
 
 @end
 
@@ -61,15 +65,17 @@
     // Play a script if we have one
     if (self.script)
     {
-        [self playAndThen:nil];
+        [self play];
     }
 }
 
 /**
  * @see ConsoleViewController.h
  */
-- (void) playAndThen:(void (^)(void))finished
+- (void) play
 {
+    _finished = NO;
+
     dispatch_async(self.playingQueue, ^{
         
         NSLog(@"%@ - Playing script", TAG);
@@ -80,19 +86,45 @@
         NSString* line = [self.script nextLine];
         while (line)
         {
-            [self playLine:line];
+            // Wait on confirmation request
+            if ([Script isConfirmationRequest:line])
+            {
+                _waitingForConfirmation = YES;
+
+                [self hideConfirmButton:NO];
+                while (self.waitingForConfirmation)
+                {
+                    [NSThread sleepForTimeInterval:DELAY_BETWEEN_CONFIRMATION_SAMPLES];
+                }
+                [self hideConfirmButton:YES];
+            }
+            
+            // Otherwise, play the line
+            else
+            {
+                [self playLine:line];
+            }
+            
+            // Fetch next line
             line = [self.script nextLine];
             
             // Insert newline here so the last line doesn't get one
-            if (line)
+            if (line && ![Script isConfirmationRequest:line])
             {
                 [self addString:@"\n"];
             }
         }
         
-        if (finished) finished();
-        
+        _finished = YES;
     });
+}
+
+/**
+ * @see ConsoleViewController.h
+ */
+- (IBAction) confirm:(id)sender
+{
+    _waitingForConfirmation = NO;
 }
 
 /**
@@ -156,6 +188,16 @@
     }
     
     return NO;
+}
+
+/**
+ * Shows or hides the confirm button from the main thread
+ */
+- (void) hideConfirmButton:(BOOL)hidden
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.confirmButton.hidden = hidden;
+    });
 }
 
 @end

@@ -40,4 +40,17 @@
     expect([script nextLine]).to.beNil();
 }
 
+- (void) testConfirmations
+{
+    Script* script = [[Script alloc] init];
+    
+    [script addLine:@"Hi"];
+    [script addConfirmationRequest];
+    [script addLine:@"Hi"];
+    
+    expect([Script isConfirmationRequest:[script nextLine]]).to.beFalsy();
+    expect([Script isConfirmationRequest:[script nextLine]]).to.beTruthy();
+    expect([Script isConfirmationRequest:[script nextLine]]).to.beFalsy();
+}
+
 @end

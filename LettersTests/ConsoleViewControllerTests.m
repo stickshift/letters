@@ -16,10 +16,9 @@
 /**
  * Tests the basics of playing a script.
  */
-- (void) testPlayScript
+- (void) testPlay
 {
     UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    __block BOOL scriptCompleted = NO;
     
     // Create a simple script
     Script* script = [[Script alloc] init];
@@ -32,12 +31,44 @@
     
     // Play the script
     consoleViewController.script = script;
-    [consoleViewController playAndThen:^{
-        scriptCompleted = YES;
-    }];
+    [consoleViewController play];
     
-    // Verify script completed
-    expect(scriptCompleted).after(30).to.beTruthy();
+    // Verify viewController finished
+    expect(consoleViewController.finished).after(30).to.beTruthy();
+}
+
+/**
+ * Tests the basics of playing a script.
+ */
+- (void) testInteractivePlay
+{
+    UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    // Create a simple script
+    Script* script = [[Script alloc] init];
+    [script addLine:@"HELLO"];
+    [script addLine:@"WOULD YOU BE MY FRIEND?"];
+    [script addConfirmationRequest];
+    [script addLine:@"THANKS!"];
+
+    // Initialize the view controller
+    ConsoleViewController* consoleViewController = [storyBoard instantiateInitialViewController];
+    [consoleViewController view];
+    
+    // Play the script
+    consoleViewController.script = script;
+    [consoleViewController play];
+    
+    // Verify viewController is waiting for input
+    expect(consoleViewController.waitingForConfirmation).after(30).to.beTruthy();
+    expect(consoleViewController.finished).after(30).to.beFalsy();
+    
+    // Confirm and let the play continue
+    [consoleViewController confirm:self];
+    
+    // Verify viewController finished
+    expect(consoleViewController.waitingForConfirmation).after(30).to.beFalsy();
+    expect(consoleViewController.finished).after(30).to.beTruthy();
 }
 
 @end

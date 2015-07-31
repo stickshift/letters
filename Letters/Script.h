@@ -16,6 +16,16 @@
 - (void) addLine:(NSString*)line;
 
 /**
+ * Returns TRUE if the line is a special confirmation request token
+ */
++ (BOOL) isConfirmationRequest:(NSString*)line;
+
+/**
+ * Adds a special token to script where play pauses waiting for confirmation
+ */
+- (void) addConfirmationRequest;
+
+/**
  * Returns the next line in the script or nil if there are none left.
  */
 - (NSString*) nextLine;
