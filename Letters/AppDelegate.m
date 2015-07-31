@@ -27,17 +27,14 @@ static BOOL isRunningTests();
     // Create a simple script
     Script* script = [[Script alloc] init];
     [script addLine:@"HELLO"];
-    [script addLine:@"WOULD YOU LIKE TO PLAY A GAME?"];
+    [script addLine:@"WOULD YOU TEACH ME TO DRAW MY LETTERS?"];
     [script addConfirmationRequest];
-    [script addLine:@"HOW ABOUT A GAME OF CHESS?"];
-    [script addConfirmationRequest];
-    [script addLine:@"GREAT"];
-    [script addLine:@"I WILL BE BLACK"];
-    [script addLine:@"YOU WILL BE WHITE"];
-    [script addLine:@"DO YOU MIND IF I GO FIRST?"];
     
-    ConsoleViewController* viewController = (ConsoleViewController*)[self.window rootViewController];
-    viewController.script = script;
+    UIViewController* viewController = self.window.rootViewController;
+    if ([viewController isKindOfClass:[ConsoleViewController class]])
+    {
+        [(ConsoleViewController*)viewController setScript:script];
+    }
     
     return YES;
 }
