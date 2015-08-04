@@ -25,8 +25,8 @@
     [super viewDidLoad];
     
     _red = 0.0/255.0;
-    _green = 128.0/255.0;
-    _blue = 255.0/255.0;
+    _green = 0.0/255.0;
+    _blue = 0.0/255.0;
     _brush = 20.0;
 }
 
