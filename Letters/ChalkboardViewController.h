@@ -10,6 +10,9 @@
 
 @interface ChalkboardViewController : UIViewController
 
+/** The UIImageView to draw on */
+@property (weak, nonatomic) IBOutlet UIImageView* imageView;
+
 /**
  * Clears chalkboard
  */

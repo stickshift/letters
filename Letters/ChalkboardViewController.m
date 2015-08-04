@@ -16,9 +16,6 @@
     CGFloat _blue;
     CGFloat _brush;
 }
-
-@property (weak, nonatomic) IBOutlet UIImageView* imageView;
-
 @end
 
 @implementation ChalkboardViewController
@@ -31,8 +28,13 @@
     _green = 128.0/255.0;
     _blue = 255.0/255.0;
     _brush = 20.0;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    self.view.backgroundColor = [UIColor clearColor];
+    [self erase:self];
 }
 
 /**
