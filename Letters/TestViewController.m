@@ -11,6 +11,7 @@
 @interface TestViewController()
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl* modeSelector;
+@property (weak, nonatomic) IBOutlet UIView* chalkboardView;
 
 @end
 
@@ -26,6 +27,17 @@
 - (IBAction) toggleModes:(id)sender
 {
     self.tabBarController.selectedIndex = self.modeSelector.selectedSegmentIndex;
+}
+
+/**
+ * @see ChalkboardViewController.h
+ */
+- (IBAction) submit:(id)sender
+{
+    // Animate the drawing out of the way
+    [UIView animateWithDuration:0.5 animations:^{
+        self.imageView.frame = self.chalkboardView.frame;
+    }];
 }
 
 @end
