@@ -30,13 +30,6 @@
     _brush = 20.0;
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self erase:self];
-}
-
 /**
  * @see ChalkboardViewController.h
  */

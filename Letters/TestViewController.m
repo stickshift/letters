@@ -8,11 +8,24 @@
 
 #import "TestViewController.h"
 
+@interface TestViewController()
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl* modeSelector;
+
+@end
+
 @implementation TestViewController
 
-- (IBAction) teachMore:(id)sender
+- (void) viewWillAppear:(BOOL)animated
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [super viewWillAppear:animated];
+    
+    self.modeSelector.selectedSegmentIndex = 1;
+}
+
+- (IBAction) toggleModes:(id)sender
+{
+    self.tabBarController.selectedIndex = self.modeSelector.selectedSegmentIndex;
 }
 
 @end

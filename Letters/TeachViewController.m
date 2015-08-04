@@ -11,6 +11,8 @@
 @interface TeachViewController()
 
 @property (nonatomic) NSMutableArray* sampleCounts;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl* modeSelector;
 @property (weak, nonatomic) IBOutlet UILabel* letterLabel;
 @property (weak, nonatomic) IBOutlet UILabel* samplesLabel;
 
@@ -38,6 +40,13 @@
     self.samplesLabel.text = [NSString stringWithFormat:@"%@", self.sampleCounts[self.currentLetter]];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.modeSelector.selectedSegmentIndex = 0;
+}
+
 /**
  * @see ChalkboardViewController.h
  */
@@ -51,6 +60,11 @@
     
     // Move on with life
     [self askForNextLetter];
+}
+
+- (IBAction) toggleModes:(id)sender
+{
+    self.tabBarController.selectedIndex = self.modeSelector.selectedSegmentIndex;
 }
 
 - (void) askForNextLetter
