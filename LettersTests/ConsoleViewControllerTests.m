@@ -31,8 +31,7 @@
     [consoleViewController view];
     
     // Play the script
-    consoleViewController.script = script;
-    [consoleViewController playAndThen:^{
+    [consoleViewController play:script andThen:^{
         finished = YES;
     }];
     

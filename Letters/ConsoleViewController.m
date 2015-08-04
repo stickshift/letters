@@ -39,7 +39,7 @@
     {
         self.playingQueue = dispatch_queue_create("playingQueue", DISPATCH_QUEUE_SERIAL);
         self.buffer = [NSMutableString stringWithString:BLOCK];
-        
+
         NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
         self.typingSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:NULL];
         self.typingSound.numberOfLoops = -1;
@@ -67,7 +67,7 @@
 /**
  * @see ConsoleViewController.h
  */
-- (void) playAndThen:(void (^)())finished
+- (void) play:(Script*)script andThen:(void (^)())finished;
 {
     dispatch_async(self.playingQueue, ^{
         
@@ -76,7 +76,7 @@
         // Start with a dramatic delay
         [NSThread sleepForTimeInterval:DELAY_BETWEEN_LINES];
         
-        NSString* line = [self.script nextLine];
+        NSString* line = [script nextLine];
         while (line)
         {
             // Wait on confirmation request
@@ -99,7 +99,7 @@
             }
             
             // Fetch next line
-            line = [self.script nextLine];
+            line = [script nextLine];
             
             // Insert newline here so the last line doesn't get one
             if (line && ![Script isConfirmationRequest:line])
@@ -118,6 +118,17 @@
 - (IBAction) confirm:(id)sender
 {
     _waitingForConfirmation = NO;
+}
+
+/**
+ * @see ConsoleViewController.h
+ */
+- (void) clear
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.buffer = [NSMutableString stringWithString:BLOCK];
+        self.textView.text = self.buffer;
+    });
 }
 
 /**
