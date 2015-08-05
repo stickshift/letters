@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Chalkboard View Controller-->
+        <!--Teaching View Controller-->
         <scene sceneID="AH9-3d-ZD3">
             <objects>
-                <viewController id="Yha-As-fXy" customClass="ChalkboardViewController" sceneMemberID="viewController">
+                <viewController id="Yha-As-fXy" customClass="TeachingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X6F-XA-zbu"/>
                         <viewControllerLayoutGuide type="bottom" id="4aS-W4-oZ1"/>
@@ -37,12 +37,22 @@
                                     <action selector="erase:" destination="Yha-As-fXy" eventType="touchUpInside" id="96J-3b-Iye"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mL-0x-5YU">
+                                <rect key="frame" x="139" y="522" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="alphabetValues" value="X, Y, Z"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="imageView" destination="zE1-pP-gVd" id="Mhv-Yv-G2K"/>
+                        <outlet property="letterLabel" destination="9mL-0x-5YU" id="zbf-sR-End"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ln0-If-Nsn" userLabel="First Responder" sceneMemberID="firstResponder"/>

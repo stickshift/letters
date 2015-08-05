@@ -10,17 +10,19 @@
 
 @implementation TeachingViewController
 
-/**
- * Custom setter initializes letterLabel with first letter
- */
-- (void) setLetterLabel:(UILabel*)letterLabel
+- (void) viewDidLoad
 {
-    _letterLabel = letterLabel;
-    
-    if (self.alphabet.count)
-    {
-        letterLabel.text = self.alphabet[self.currentLetter];
-    }
+    [super viewDidLoad];
+    self.letterLabel.text = self.alphabet[self.currentLetter];
+}
+
+/**
+ * Custom setter for alphabetValues that parses out the alphabet
+ */
+- (void) setAlphabetValues:(NSString*)alphabetValues
+{
+    _alphabetValues = alphabetValues;
+    self.alphabet = [alphabetValues componentsSeparatedByString:@", "];
 }
 
 /**

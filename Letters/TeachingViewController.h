@@ -15,6 +15,9 @@
 /** The set of letters to teach */
 @property (strong, nonatomic) NSArray* alphabet;
 
+/** Lets you set entire alphabet at once using IB and user-defined runtime props */
+@property (strong, nonatomic) NSString* alphabetValues;
+
 /** Index of currently selected letter from alphabet */
 @property NSUInteger currentLetter;
 

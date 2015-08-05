@@ -37,6 +37,7 @@
     TeachingViewController* viewController = [[TeachingViewController alloc] initWithNibName:nil bundle:nil];
     viewController.alphabet = alphabet;
     viewController.letterLabel = letterLabel;
+    [viewController view];
     
     // Submit the chalkboard over and over to iterate through the letters
     for (NSUInteger i = 0;i < alphabet.count - 1;i++)
@@ -84,6 +85,7 @@
     viewController.imageView = imageView;
     viewController.featureExtractor = featureExtractor;
     viewController.classifier = classifier;
+    [viewController view];
 
     // Submit drawing
     [viewController submit:nil];
