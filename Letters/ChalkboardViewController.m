@@ -8,6 +8,9 @@
 
 #import "ChalkboardViewController.h"
 
+// Constants
+#define TAG @"ChalkboardViewController"
+
 @interface ChalkboardViewController ()
 {
     CGPoint _lastPoint;
@@ -21,17 +24,38 @@
 @implementation ChalkboardViewController
 
 /**
- * Ctor
+ * Common initialization code
+ */
+- (void) initialize
+{
+    _red = 0.0/255.0;
+    _green = 0.0/255.0;
+    _blue = 0.0/255.0;
+    _brush = 20.0;
+}
+
+/**
+ * Ctor outside nib
  */
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        _red = 0.0/255.0;
-        _green = 0.0/255.0;
-        _blue = 0.0/255.0;
-        _brush = 20.0;
+        [self initialize];
+    }
+    return self;
+}
+
+/**
+ * Ctor inside nib
+ */
+- (instancetype) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [self initialize];
     }
     return self;
 }
@@ -79,6 +103,8 @@
  */
 - (IBAction) erase:(id)sender
 {
+    NSLog(@"%@ - Erasing chalkboard", TAG);
+    
     self.imageView.image = nil;
 }
 
@@ -87,7 +113,7 @@
  */
 - (IBAction) submit:(id)sender
 {
-    
+    NSLog(@"%@ - Submitting chalkboard", TAG);
 }
 
 @end
