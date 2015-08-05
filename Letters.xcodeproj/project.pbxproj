@@ -13,6 +13,8 @@
 		4E0C0F7A1B71C7B6002BBDD2 /* ChalkboardViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F791B71C7B6002BBDD2 /* ChalkboardViewControllerTests.m */; };
 		4E0C0F7D1B71C7FB002BBDD2 /* ChalkboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F7C1B71C7FB002BBDD2 /* ChalkboardViewController.m */; };
 		4E0C0F7F1B723276002BBDD2 /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0C0F7E1B723276002BBDD2 /* Demo.storyboard */; };
+		4E0C0F811B723937002BBDD2 /* TeachingViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F801B723937002BBDD2 /* TeachingViewControllerTests.m */; };
+		4E0C0F841B723A4B002BBDD2 /* TeachingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F831B723A4B002BBDD2 /* TeachingViewController.m */; };
 		4E3115221B6B225700988EDE /* typing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115211B6B225700988EDE /* typing.wav */; };
 		4E3115271B6BB0CA00988EDE /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115231B6BB0CA00988EDE /* check.png */; };
 		4E3115281B6BB0CA00988EDE /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115241B6BB0CA00988EDE /* check@2x.png */; };
@@ -47,6 +49,11 @@
 		4E0C0F7B1B71C7FB002BBDD2 /* ChalkboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChalkboardViewController.h; sourceTree = "<group>"; };
 		4E0C0F7C1B71C7FB002BBDD2 /* ChalkboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChalkboardViewController.m; sourceTree = "<group>"; };
 		4E0C0F7E1B723276002BBDD2 /* Demo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Demo.storyboard; sourceTree = "<group>"; };
+		4E0C0F801B723937002BBDD2 /* TeachingViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeachingViewControllerTests.m; sourceTree = "<group>"; };
+		4E0C0F821B723A4B002BBDD2 /* TeachingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachingViewController.h; sourceTree = "<group>"; };
+		4E0C0F831B723A4B002BBDD2 /* TeachingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeachingViewController.m; sourceTree = "<group>"; };
+		4E0C0F851B723EAB002BBDD2 /* FeatureExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureExtractor.h; sourceTree = "<group>"; };
+		4E0C0F881B723EBB002BBDD2 /* Classifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Classifier.h; sourceTree = "<group>"; };
 		4E3115211B6B225700988EDE /* typing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = typing.wav; path = Letters/Resources/typing.wav; sourceTree = "<group>"; };
 		4E3115231B6BB0CA00988EDE /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = Letters/Resources/check.png; sourceTree = "<group>"; };
 		4E3115241B6BB0CA00988EDE /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "check@2x.png"; path = "Letters/Resources/check@2x.png"; sourceTree = "<group>"; };
@@ -140,6 +147,10 @@
 				4E0C0F751B71A9DD002BBDD2 /* ConsoleViewController.m */,
 				4E0C0F7B1B71C7FB002BBDD2 /* ChalkboardViewController.h */,
 				4E0C0F7C1B71C7FB002BBDD2 /* ChalkboardViewController.m */,
+				4E0C0F821B723A4B002BBDD2 /* TeachingViewController.h */,
+				4E0C0F831B723A4B002BBDD2 /* TeachingViewController.m */,
+				4E0C0F851B723EAB002BBDD2 /* FeatureExtractor.h */,
+				4E0C0F881B723EBB002BBDD2 /* Classifier.h */,
 				4E84C3F01B69D4FC003DE2B2 /* AppDelegate.h */,
 				4E84C3F11B69D4FC003DE2B2 /* AppDelegate.m */,
 				4E84C3FB1B69D4FD003DE2B2 /* LaunchScreen.xib */,
@@ -166,6 +177,7 @@
 			children = (
 				4E0C0F721B71A964002BBDD2 /* ConsoleViewControllerTests.m */,
 				4E0C0F791B71C7B6002BBDD2 /* ChalkboardViewControllerTests.m */,
+				4E0C0F801B723937002BBDD2 /* TeachingViewControllerTests.m */,
 				4E5AB81D1B6AD83E00E9C0A2 /* LettersTestCase.h */,
 				4E5AB81E1B6AD83E00E9C0A2 /* LettersTestCase.m */,
 				4E84C4061B69D4FD003DE2B2 /* Supporting Files */,
@@ -335,6 +347,7 @@
 				4E84C3F21B69D4FC003DE2B2 /* AppDelegate.m in Sources */,
 				4E84C3EF1B69D4FC003DE2B2 /* main.m in Sources */,
 				4E0C0F761B71A9DD002BBDD2 /* ConsoleViewController.m in Sources */,
+				4E0C0F841B723A4B002BBDD2 /* TeachingViewController.m in Sources */,
 				4E0C0F7D1B71C7FB002BBDD2 /* ChalkboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E0C0F731B71A964002BBDD2 /* ConsoleViewControllerTests.m in Sources */,
+				4E0C0F811B723937002BBDD2 /* TeachingViewControllerTests.m in Sources */,
 				4E0C0F7A1B71C7B6002BBDD2 /* ChalkboardViewControllerTests.m in Sources */,
 				4E5AB81F1B6AD83E00E9C0A2 /* LettersTestCase.m in Sources */,
 			);
