@@ -8,7 +8,32 @@
 
 #import "TestingViewController.h"
 
+@interface TestingViewController()
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl* modeSelector;
+
+@end
+
 @implementation TestingViewController
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.textView.hidden = YES;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.modeSelector.selectedSegmentIndex = 1;
+}
+
+- (IBAction)toggleModes:(id)sender
+{
+    self.tabBarController.selectedIndex = self.modeSelector.selectedSegmentIndex;
+}
 
 /**
  * @see ChalkboardViewController.h
@@ -24,6 +49,12 @@
 
     } completion:^(BOOL finished) {
         
+        if (!self.classifier.vocabulary.count)
+        {
+            [self print:@"No idea! You haven't taught me anything yet." andThen:nil];
+            return;
+        }
+
         NSString* guess = [self classify];
         
         [self print:[NSString stringWithFormat:@"Is it a %@?", guess] andThen:nil];

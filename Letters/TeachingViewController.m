@@ -8,12 +8,32 @@
 
 #import "TeachingViewController.h"
 
+@interface TeachingViewController()
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl* modeSelector;
+
+@end
+
 @implementation TeachingViewController
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+
+    self.textView.hidden = YES;
     self.letterLabel.text = self.alphabet[self.currentLetter];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.modeSelector.selectedSegmentIndex = 0;
+}
+
+- (IBAction)toggleModes:(id)sender
+{
+     self.tabBarController.selectedIndex = self.modeSelector.selectedSegmentIndex;
 }
 
 /**

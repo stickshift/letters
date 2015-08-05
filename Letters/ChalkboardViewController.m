@@ -23,41 +23,14 @@
 
 @implementation ChalkboardViewController
 
-/**
- * Common initialization code
- */
-- (void) initialize
+- (void) viewDidLoad
 {
+    [super viewDidLoad];
+    
     _red = 0.0/255.0;
     _green = 0.0/255.0;
     _blue = 0.0/255.0;
     _brush = 20.0;
-}
-
-/**
- * Ctor outside nib
- */
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        [self initialize];
-    }
-    return self;
-}
-
-/**
- * Ctor inside nib
- */
-- (instancetype) initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        [self initialize];
-    }
-    return self;
 }
 
 /**

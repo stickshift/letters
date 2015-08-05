@@ -77,15 +77,22 @@
 
 - (void) testSubmitGuessesAnswer
 {
+    NSArray* vocabulary = @[ @"A", @"B", @"C" ];
+    id classifier = OCMProtocolMock(@protocol(Classifier));
     TestingViewController* viewController = OCMPartialMock([[TestingViewController alloc] initWithNibName:nil bundle:nil]);
     
     /* Expect */
+
+    OCMStub([classifier vocabulary]).andReturn(vocabulary);
     
     OCMStub([viewController classify]).andReturn(@"A");
     
     OCMExpect([viewController print:@"Is it a A?" andThen:[OCMArg any]]);
     
     /* Run */
+    
+    viewController.classifier = classifier;
+    [viewController view];
     
     [viewController submit:nil];
     

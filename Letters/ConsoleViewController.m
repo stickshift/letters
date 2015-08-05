@@ -12,8 +12,8 @@
 // Constants
 #define TAG @"ConsoleViewController"
 #define CURSOR @"\u200A\u258B"
+#define INITIAL_DELAY 0.7
 #define DELAY_BETWEEN_CHARACTERS 0.07
-#define DELAY_BETWEEN_LINES 1.0
 
 @interface ConsoleViewController()
 
@@ -33,11 +33,10 @@
     return CURSOR;
 }
 
-/**
- * Common initialization code
- */
-- (void) initialize
+- (void) viewDidLoad
 {
+    [super viewDidLoad];
+    
     _animationQueue = dispatch_queue_create("Animation Queue", DISPATCH_QUEUE_SERIAL);
     
     NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
@@ -45,37 +44,6 @@
     _typingSound.numberOfLoops = -1;
     
     _buffer = [NSMutableString stringWithString:CURSOR];
-}
-
-/**
- * Ctor outside nib
- */
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        [self initialize];
-    }
-    return self;
-}
-
-/**
- * Ctor inside nib
- */
-- (instancetype) initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        [self initialize];
-    }
-    return self;
-}
-
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
     
     // Initialize textView content
     self.textView.text = self.buffer;
@@ -90,13 +58,23 @@
     {
         return;
     }
-    
+
+    // Reset buffer
+    if (self.buffer.length > CURSOR.length)
+    {
+        [self.buffer setString:CURSOR];
+        self.textView.text = self.buffer;
+    }
+
+    // Make sure textView is visible
+    self.textView.hidden = NO;
+
     dispatch_async(self.animationQueue, ^{
 
         NSLog(@"%@ - Printing script", TAG);
 
         // Start with a dramatic delay
-        [NSThread sleepForTimeInterval:DELAY_BETWEEN_LINES];
+        [NSThread sleepForTimeInterval:INITIAL_DELAY];
 
         [self.typingSound play];
         for (NSUInteger i = 0;i < msg.length;i++)

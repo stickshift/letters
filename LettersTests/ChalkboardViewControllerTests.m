@@ -28,6 +28,7 @@
     
     ChalkboardViewController* viewController = [[ChalkboardViewController alloc] initWithNibName:nil bundle:nil];
     viewController.imageView = imageView;
+    [viewController view];
     
     [viewController touchesBegan:[NSSet setWithObjects:touch1, nil] withEvent:nil];
     [viewController touchesMoved:[NSSet setWithObjects:touch2, nil] withEvent:nil];
@@ -49,6 +50,8 @@
     
     ChalkboardViewController* viewController = [[ChalkboardViewController alloc] initWithNibName:nil bundle:nil];
     viewController.imageView = imageView;
+    [viewController view];
+    
     [viewController erase:nil];
     
     /* Verify */

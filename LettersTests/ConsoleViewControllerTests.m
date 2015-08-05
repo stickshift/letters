@@ -20,7 +20,6 @@
     NSString* msg = @"Hello";
     NSString* cursor = [ConsoleViewController cursor];
     id textView = OCMClassMock([UITextView class]);
-    __block BOOL completionHandlerCalled = NO;
     
     /* Expect */
     
@@ -34,14 +33,13 @@
 
     ConsoleViewController* viewController = [[ConsoleViewController alloc] initWithNibName:nil bundle:nil];
     viewController.textView = textView;
-    [viewController print:msg andThen:^{
-        completionHandlerCalled = YES;
-    }];
+    [viewController view];
+    
+    [viewController print:msg andThen:nil];
     
     /* Verify */
 
-    OCMVerifyAllWithDelay(textView, 30);
-    expect(completionHandlerCalled).after(30).to.beTruthy();
+    OCMVerifyAllWithDelay(textView, 15);
 }
 
 /**
@@ -54,6 +52,8 @@
     /* Run */
     
     ConsoleViewController* viewController = [[ConsoleViewController alloc] initWithNibName:nil bundle:nil];
+    [viewController view];
+    
     [viewController print:@"Hello" andThen:^{
         completionHandlerCalledOnMainThread = [NSThread isMainThread];
     }];
