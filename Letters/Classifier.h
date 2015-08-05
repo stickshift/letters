@@ -13,6 +13,9 @@
  */
 @protocol Classifier <NSObject>
 
+/** The set of letters we have been trained on */
+@property (strong, nonatomic) NSArray* vocabulary;
+
 /**
  * Trains classifier with positive example.
  */
