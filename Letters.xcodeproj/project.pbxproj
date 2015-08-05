@@ -20,6 +20,8 @@
 		4E0C0F911B72C3A3002BBDD2 /* SampleGridFeatureExtractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F901B72C3A3002BBDD2 /* SampleGridFeatureExtractorTests.m */; };
 		4E0C0F941B72C446002BBDD2 /* SampleGridFeatureExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F931B72C446002BBDD2 /* SampleGridFeatureExtractor.m */; };
 		4E0C0F971B72C694002BBDD2 /* UIImage+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F961B72C694002BBDD2 /* UIImage+Letters.m */; };
+		4E0C0F991B72C751002BBDD2 /* LinearGuessClassifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F981B72C751002BBDD2 /* LinearGuessClassifierTests.m */; };
+		4E0C0F9C1B72C9B1002BBDD2 /* LinearGuessClassifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */; };
 		4E3115221B6B225700988EDE /* typing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115211B6B225700988EDE /* typing.wav */; };
 		4E3115271B6BB0CA00988EDE /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115231B6BB0CA00988EDE /* check.png */; };
 		4E3115281B6BB0CA00988EDE /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115241B6BB0CA00988EDE /* check@2x.png */; };
@@ -67,6 +69,9 @@
 		4E0C0F931B72C446002BBDD2 /* SampleGridFeatureExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleGridFeatureExtractor.m; sourceTree = "<group>"; };
 		4E0C0F951B72C694002BBDD2 /* UIImage+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Letters.h"; sourceTree = "<group>"; };
 		4E0C0F961B72C694002BBDD2 /* UIImage+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Letters.m"; sourceTree = "<group>"; };
+		4E0C0F981B72C751002BBDD2 /* LinearGuessClassifierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearGuessClassifierTests.m; sourceTree = "<group>"; };
+		4E0C0F9A1B72C9B1002BBDD2 /* LinearGuessClassifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearGuessClassifier.h; sourceTree = "<group>"; };
+		4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearGuessClassifier.m; sourceTree = "<group>"; };
 		4E3115211B6B225700988EDE /* typing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = typing.wav; path = Letters/Resources/typing.wav; sourceTree = "<group>"; };
 		4E3115231B6BB0CA00988EDE /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = Letters/Resources/check.png; sourceTree = "<group>"; };
 		4E3115241B6BB0CA00988EDE /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "check@2x.png"; path = "Letters/Resources/check@2x.png"; sourceTree = "<group>"; };
@@ -168,6 +173,8 @@
 				4E0C0F881B723EBB002BBDD2 /* Classifier.h */,
 				4E0C0F921B72C446002BBDD2 /* SampleGridFeatureExtractor.h */,
 				4E0C0F931B72C446002BBDD2 /* SampleGridFeatureExtractor.m */,
+				4E0C0F9A1B72C9B1002BBDD2 /* LinearGuessClassifier.h */,
+				4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */,
 				4E84C3F01B69D4FC003DE2B2 /* AppDelegate.h */,
 				4E84C3F11B69D4FC003DE2B2 /* AppDelegate.m */,
 				4E0C0F951B72C694002BBDD2 /* UIImage+Letters.h */,
@@ -199,6 +206,7 @@
 				4E0C0F801B723937002BBDD2 /* TeachingViewControllerTests.m */,
 				4E0C0F8B1B724B08002BBDD2 /* TestingViewControllerTests.m */,
 				4E0C0F901B72C3A3002BBDD2 /* SampleGridFeatureExtractorTests.m */,
+				4E0C0F981B72C751002BBDD2 /* LinearGuessClassifierTests.m */,
 				4E5AB81D1B6AD83E00E9C0A2 /* LettersTestCase.h */,
 				4E5AB81E1B6AD83E00E9C0A2 /* LettersTestCase.m */,
 				4E84C4061B69D4FD003DE2B2 /* Supporting Files */,
@@ -372,6 +380,7 @@
 				4E0C0F761B71A9DD002BBDD2 /* ConsoleViewController.m in Sources */,
 				4E0C0F8F1B724BA1002BBDD2 /* TestingViewController.m in Sources */,
 				4E0C0F841B723A4B002BBDD2 /* TeachingViewController.m in Sources */,
+				4E0C0F9C1B72C9B1002BBDD2 /* LinearGuessClassifier.m in Sources */,
 				4E0C0F7D1B71C7FB002BBDD2 /* ChalkboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E0C0F991B72C751002BBDD2 /* LinearGuessClassifierTests.m in Sources */,
 				4E0C0F731B71A964002BBDD2 /* ConsoleViewControllerTests.m in Sources */,
 				4E0C0F911B72C3A3002BBDD2 /* SampleGridFeatureExtractorTests.m in Sources */,
 				4E0C0F811B723937002BBDD2 /* TeachingViewControllerTests.m in Sources */,
