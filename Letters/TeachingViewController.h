@@ -10,6 +10,13 @@
 #import "FeatureExtractor.h"
 #import "Classifier.h"
 
+/**
+ * Manages "teaching" interaction —
+ *
+ *   1) Joshua asks you to teach him a letter
+ *   2) You draw it with your finger and tell Joshua when you're done
+ *   3) Joshua remembers this as a positive example
+ */
 @interface TeachingViewController : ChalkboardViewController
 
 /** The set of letters to teach */
