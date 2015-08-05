@@ -95,4 +95,23 @@
     OCMVerifyAll(classifier);
 }
 
+- (void) testSubmitErasesBoard
+{
+    NSArray* alphabet = @[ @"A", @"B", @"C" ];
+    TeachingViewController* viewController = OCMPartialMock([[TeachingViewController alloc] initWithNibName:nil bundle:nil]);
+    
+    /* Expect */
+    
+    OCMExpect([viewController erase:[OCMArg any]]);
+    
+    /* Run */
+    
+    viewController.alphabet = alphabet;
+    [viewController submit:nil];
+    
+    /* Verify */
+    
+    OCMVerifyAll((id)viewController);
+}
+
 @end

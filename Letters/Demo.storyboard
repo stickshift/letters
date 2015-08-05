@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Teaching View Controller-->
+        <!--Testing View Controller-->
         <scene sceneID="AH9-3d-ZD3">
             <objects>
-                <viewController id="Yha-As-fXy" customClass="TeachingViewController" sceneMemberID="viewController">
+                <viewController id="Yha-As-fXy" customClass="TestingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X6F-XA-zbu"/>
                         <viewControllerLayoutGuide type="bottom" id="4aS-W4-oZ1"/>
@@ -37,12 +37,17 @@
                                     <action selector="erase:" destination="Yha-As-fXy" eventType="touchUpInside" id="96J-3b-Iye"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mL-0x-5YU">
-                                <rect key="frame" x="139" y="522" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecJ-ye-iHM">
+                                <rect key="frame" x="98" y="449" width="124" height="99"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VxT-kg-iLr">
+                                <rect key="frame" x="64" y="35" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -52,7 +57,8 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="imageView" destination="zE1-pP-gVd" id="Mhv-Yv-G2K"/>
-                        <outlet property="letterLabel" destination="9mL-0x-5YU" id="zbf-sR-End"/>
+                        <outlet property="targetDrawingArea" destination="ecJ-ye-iHM" id="6PA-z5-jAt"/>
+                        <outlet property="textView" destination="VxT-kg-iLr" id="Hby-zx-VCp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ln0-If-Nsn" userLabel="First Responder" sceneMemberID="firstResponder"/>

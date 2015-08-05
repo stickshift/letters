@@ -43,6 +43,9 @@
     // Train classifier with positive example
     [self.classifier trainFeatures:features generateOutput:self.currentLetter];
     
+    // Erase board
+    [self erase:self];
+    
     // Bump currentLetter
     self.currentLetter = (self.currentLetter + 1) % self.alphabet.count;
     
