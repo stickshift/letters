@@ -107,7 +107,11 @@
         }
         [self.typingSound stop];
         
-        if (then) then();
+        if (then)
+        {
+            // Always dispatch on main queue. Prevents clients from having to do this themselves.
+            dispatch_async(dispatch_get_main_queue(), ^{ then(); });
+        }
     });
 }
 
