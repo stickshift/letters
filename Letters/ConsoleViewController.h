@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- * Provides base class for view controllers that print output to the "console"
+ * Base class for view controllers that print output to the "console"
  */
 @interface ConsoleViewController : UIViewController
 
