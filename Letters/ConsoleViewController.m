@@ -34,6 +34,20 @@
 }
 
 /**
+ * Common initialization code
+ */
+- (void) initialize
+{
+    _animationQueue = dispatch_queue_create("Animation Queue", DISPATCH_QUEUE_SERIAL);
+    
+    NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
+    _typingSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:NULL];
+    _typingSound.numberOfLoops = -1;
+    
+    _buffer = [NSMutableString stringWithString:CURSOR];
+}
+
+/**
  * Ctor outside nib
  */
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,13 +55,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        _animationQueue = dispatch_queue_create("Animation Queue", DISPATCH_QUEUE_SERIAL);
-        
-        NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
-        _typingSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:NULL];
-        _typingSound.numberOfLoops = -1;
-        
-        _buffer = [NSMutableString stringWithString:CURSOR];
+        [self initialize];
     }
     return self;
 }
@@ -60,13 +68,7 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        _animationQueue = dispatch_queue_create("Animation Queue", DISPATCH_QUEUE_SERIAL);
-        
-        NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
-        _typingSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:NULL];
-        _typingSound.numberOfLoops = -1;
-        
-        _buffer = [NSMutableString stringWithString:CURSOR];
+        [self initialize];
     }
     return self;
 }
