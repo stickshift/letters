@@ -68,6 +68,26 @@
                                     <action selector="submit:" destination="znr-kf-0Yh" eventType="touchUpInside" id="cD1-rj-vqc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eET-6L-dme">
+                                <rect key="frame" x="16" y="504" width="78" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Try Again">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAgain:" destination="znr-kf-0Yh" eventType="touchUpInside" id="V1y-cZ-Zav"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se8-GO-xQb">
+                                <rect key="frame" x="214" y="504" width="90" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="You Got It!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="youGotIt:" destination="znr-kf-0Yh" eventType="touchUpInside" id="zwg-bA-2i9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -94,10 +114,14 @@
                     <tabBarItem key="tabBarItem" title="Item 2" id="LHt-Wv-m8j"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="eraseButton" destination="kzM-8k-fbb" id="tB8-p4-ru4"/>
                         <outlet property="imageView" destination="hNW-AO-YbL" id="kiz-wm-aBo"/>
                         <outlet property="modeSelector" destination="sBU-Ph-4OG" id="8Ca-Ml-uh5"/>
+                        <outlet property="submitButton" destination="hhX-te-Ned" id="hea-Ub-KUg"/>
                         <outlet property="targetDrawingArea" destination="wga-20-hIN" id="xAi-Zn-yIL"/>
                         <outlet property="textView" destination="TTd-04-XwD" id="9zb-LF-LuJ"/>
+                        <outlet property="tryAgainButton" destination="eET-6L-dme" id="CPn-pb-OSh"/>
+                        <outlet property="youGotItButton" destination="Se8-GO-xQb" id="GHz-yi-WXS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnA-ik-UBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -209,10 +233,10 @@
             </objects>
             <point key="canvasLocation" x="141" y="166"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root View Controller-->
         <scene sceneID="umX-Fz-LUK">
             <objects>
-                <tabBarController id="LoO-Ip-p9V" sceneMemberID="viewController">
+                <tabBarController id="LoO-Ip-p9V" customClass="RootViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" id="qLW-nh-nMa">

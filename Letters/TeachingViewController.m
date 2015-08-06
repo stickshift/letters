@@ -61,7 +61,7 @@
     NSArray* features = [self.featureExtractor extract:self.imageView.image];
     
     // Train classifier with positive example
-    [self.classifier trainFeatures:features generateOutput:self.currentLetter];
+    [self.classifier trainFeatures:features generateOutput:self.alphabet[self.currentLetter]];
     
     // Erase board
     [self erase:self];

@@ -35,18 +35,18 @@
 /**
  * @see Classifier.h
  */
-- (void) trainFeatures:(NSArray*)features generateOutput:(NSUInteger)output
+- (void) trainFeatures:(NSArray*)features generateOutput:(NSString*)output
 {
-    if (![_vocabulary containsObject:@(output)])
+    if (![_vocabulary containsObject:output])
     {
-        [_vocabulary addObject:@(output)];
+        [_vocabulary addObject:output];
     }
 }
 
 /**
  * @see Classifier.h
  */
-- (void) trainFeatures:(NSArray*)features doNotGenerateOutput:(NSUInteger)output
+- (void) trainFeatures:(NSArray*)features doNotGenerateOutput:(NSString*)output
 {
     NSMutableArray* negativeExamples = _negativeExampleMap[features];
     if (negativeExamples == nil)
@@ -55,28 +55,28 @@
         _negativeExampleMap[features] = negativeExamples;
     }
     
-    if (![negativeExamples containsObject:@(output)])
+    if (![negativeExamples containsObject:output])
     {
-        [negativeExamples addObject:@(output)];
+        [negativeExamples addObject:output];
     }
 }
 
 /**
  * @see Classifier.h
  */
-- (NSUInteger) classifyFeatures:(NSArray*)features
+- (NSString*) classifyFeatures:(NSArray*)features
 {
     NSMutableArray* negativeExamples = _negativeExampleMap[features];
 
-    for (NSNumber* n in _vocabulary)
+    for (NSString* s in _vocabulary)
     {
-        if (![negativeExamples containsObject:n])
+        if (![negativeExamples containsObject:s])
         {
-            return [n unsignedIntegerValue];
+            return s;
         }
     }
 
-    return 0;
+    return nil;
 }
 
 @end

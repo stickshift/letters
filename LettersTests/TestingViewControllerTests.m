@@ -19,7 +19,7 @@
     id features = OCMClassMock([NSArray class]);
     id featureExtractor = OCMProtocolMock(@protocol(FeatureExtractor));
     id classifier = OCMProtocolMock(@protocol(Classifier));
-    NSUInteger expectedResult = 2;
+    NSString* expectedResult = @"C";
     NSArray* vocabulary = @[ @"A", @"B", @"C" ];
     
     /* Expect */
@@ -46,7 +46,7 @@
     
     /* Verify */
     
-    expect([viewController classify]).to.equal(@"C");
+    expect([viewController classify]).to.equal(expectedResult);
 }
 
 - (void) testSubmitAnimatesDrawingDownToChalkboardSize
@@ -75,9 +75,13 @@
     OCMVerifyAll(imageView);
 }
 
-- (void) testSubmitGuessesAnswer
+- (void) testSubmitGuessesAnswerAndAsksForFeedback
 {
     NSArray* vocabulary = @[ @"A", @"B", @"C" ];
+    id eraseButton = OCMClassMock([UIButton class]);
+    id submitButton = OCMClassMock([UIButton class]);
+    id tryAgainButton = OCMClassMock([UIButton class]);
+    id youGotItButton = OCMClassMock([UIButton class]);
     id classifier = OCMProtocolMock(@protocol(Classifier));
     TestingViewController* viewController = OCMPartialMock([[TestingViewController alloc] initWithNibName:nil bundle:nil]);
     
@@ -87,10 +91,22 @@
     
     OCMStub([viewController classify]).andReturn(@"A");
     
-    OCMExpect([viewController print:@"Is it a A?" andThen:[OCMArg any]]);
+    OCMExpect([viewController print:@"Is it a A?" andThen:[OCMArg any]]).andForwardToRealObject();
+
+    OCMExpect([eraseButton setHidden:YES]);
+    
+    OCMExpect([submitButton setHidden:YES]);
+    
+    OCMExpect([tryAgainButton setHidden:NO]);
+    
+    OCMExpect([youGotItButton setHidden:NO]);
     
     /* Run */
     
+    viewController.eraseButton = eraseButton;
+    viewController.submitButton = submitButton;
+    viewController.tryAgainButton = tryAgainButton;
+    viewController.youGotItButton = youGotItButton;
     viewController.classifier = classifier;
     [viewController view];
     
@@ -99,11 +115,15 @@
     /* Verify */
     
     OCMVerifyAllWithDelay((id)viewController, 15);
+    OCMVerifyAllWithDelay(eraseButton, 15);
+    OCMVerifyAllWithDelay(submitButton, 15);
+    OCMVerifyAllWithDelay(tryAgainButton, 15);
+    OCMVerifyAllWithDelay(youGotItButton, 15);
 }
 
 - (void) testTryAgain
 {
-    NSUInteger currentGuessIndex = 2;
+    NSString* currentGuess = @"A";
     id image = OCMClassMock([UIImage class]);
     id imageView = OCMClassMock([UIImageView class]);
     id features = OCMClassMock([NSArray class]);
@@ -120,14 +140,14 @@
     OCMStub([featureExtractor extract:image]).andReturn(features);
     
     // Training with negative example
-    OCMExpect([classifier trainFeatures:features doNotGenerateOutput:currentGuessIndex]);
+    OCMExpect([classifier trainFeatures:features doNotGenerateOutput:currentGuess]);
     
     // Re-submit
     OCMExpect([viewController submit:[OCMArg any]]);
     
     /* Run */
     
-    viewController.currentGuessIndex = currentGuessIndex;
+    viewController.currentGuess = currentGuess;
     viewController.imageView = imageView;
     viewController.featureExtractor = featureExtractor;
     viewController.classifier = classifier;
@@ -139,6 +159,27 @@
     /* Verify */
     
     OCMVerifyAll(classifier);
+    OCMVerifyAll((id)viewController);
+}
+
+- (void) testYouGotIt
+{
+    TestingViewController* viewController = OCMPartialMock([[TestingViewController alloc] initWithNibName:nil bundle:nil]);
+    
+    /* Expect */
+
+    // Erase
+    OCMExpect([viewController erase:[OCMArg any]]);
+    
+    /* Run */
+    
+    [viewController view];
+    
+    // Tell viewController the currentGuess is right
+    [viewController youGotIt:nil];
+    
+    /* Verify */
+    
     OCMVerifyAll((id)viewController);
 }
 

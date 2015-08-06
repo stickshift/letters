@@ -22,6 +22,7 @@
 		4E0C0F971B72C694002BBDD2 /* UIImage+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F961B72C694002BBDD2 /* UIImage+Letters.m */; };
 		4E0C0F991B72C751002BBDD2 /* LinearGuessClassifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F981B72C751002BBDD2 /* LinearGuessClassifierTests.m */; };
 		4E0C0F9C1B72C9B1002BBDD2 /* LinearGuessClassifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */; };
+		4E0C0F9F1B72CEAE002BBDD2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F9E1B72CEAE002BBDD2 /* RootViewController.m */; };
 		4E3115221B6B225700988EDE /* typing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115211B6B225700988EDE /* typing.wav */; };
 		4E3115271B6BB0CA00988EDE /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115231B6BB0CA00988EDE /* check.png */; };
 		4E3115281B6BB0CA00988EDE /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115241B6BB0CA00988EDE /* check@2x.png */; };
@@ -72,6 +73,8 @@
 		4E0C0F981B72C751002BBDD2 /* LinearGuessClassifierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearGuessClassifierTests.m; sourceTree = "<group>"; };
 		4E0C0F9A1B72C9B1002BBDD2 /* LinearGuessClassifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearGuessClassifier.h; sourceTree = "<group>"; };
 		4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearGuessClassifier.m; sourceTree = "<group>"; };
+		4E0C0F9D1B72CEAE002BBDD2 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4E0C0F9E1B72CEAE002BBDD2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4E3115211B6B225700988EDE /* typing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = typing.wav; path = Letters/Resources/typing.wav; sourceTree = "<group>"; };
 		4E3115231B6BB0CA00988EDE /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = Letters/Resources/check.png; sourceTree = "<group>"; };
 		4E3115241B6BB0CA00988EDE /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "check@2x.png"; path = "Letters/Resources/check@2x.png"; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */,
 				4E84C3F01B69D4FC003DE2B2 /* AppDelegate.h */,
 				4E84C3F11B69D4FC003DE2B2 /* AppDelegate.m */,
+				4E0C0F9D1B72CEAE002BBDD2 /* RootViewController.h */,
+				4E0C0F9E1B72CEAE002BBDD2 /* RootViewController.m */,
 				4E0C0F951B72C694002BBDD2 /* UIImage+Letters.h */,
 				4E0C0F961B72C694002BBDD2 /* UIImage+Letters.m */,
 				4E84C3FB1B69D4FD003DE2B2 /* LaunchScreen.xib */,
@@ -377,6 +382,7 @@
 				4E84C3EF1B69D4FC003DE2B2 /* main.m in Sources */,
 				4E0C0F941B72C446002BBDD2 /* SampleGridFeatureExtractor.m in Sources */,
 				4E0C0F971B72C694002BBDD2 /* UIImage+Letters.m in Sources */,
+				4E0C0F9F1B72CEAE002BBDD2 /* RootViewController.m in Sources */,
 				4E0C0F761B71A9DD002BBDD2 /* ConsoleViewController.m in Sources */,
 				4E0C0F8F1B724BA1002BBDD2 /* TestingViewController.m in Sources */,
 				4E0C0F841B723A4B002BBDD2 /* TeachingViewController.m in Sources */,

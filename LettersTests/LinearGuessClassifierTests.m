@@ -21,35 +21,35 @@
     /* Run */
     
     LinearGuessClassifier* classifier = [[LinearGuessClassifier alloc] init];
-    [classifier trainFeatures:features1 generateOutput:0];
-    [classifier trainFeatures:features2 generateOutput:1];
-    [classifier trainFeatures:features3 generateOutput:2];
+    [classifier trainFeatures:features1 generateOutput:@"A"];
+    [classifier trainFeatures:features2 generateOutput:@"B"];
+    [classifier trainFeatures:features3 generateOutput:@"C"];
     
     /* Verify */
     
-    // features1 => 0 is right answer
-    expect([classifier classifyFeatures:features1]).to.equal(0);
+    // features1 => A is right answer
+    expect([classifier classifyFeatures:features1]).to.equal(@"A");
     
-    // features2 => 0
-    expect([classifier classifyFeatures:features2]).to.equal(0);
+    // features2 => A
+    expect([classifier classifyFeatures:features2]).to.equal(@"A");
     
-    [classifier trainFeatures:features2 doNotGenerateOutput:0];
+    [classifier trainFeatures:features2 doNotGenerateOutput:@"A"];
     
-    // features2 => 1 is right answer
-    expect([classifier classifyFeatures:features2]).to.equal(1);
+    // features2 => B is right answer
+    expect([classifier classifyFeatures:features2]).to.equal(@"B");
     
-    // features3 => 0
-    expect([classifier classifyFeatures:features3]).to.equal(0);
+    // features3 => A
+    expect([classifier classifyFeatures:features3]).to.equal(@"A");
     
-    [classifier trainFeatures:features3 doNotGenerateOutput:0];
+    [classifier trainFeatures:features3 doNotGenerateOutput:@"A"];
     
-    // features3 => 1
-    expect([classifier classifyFeatures:features3]).to.equal(1);
+    // features3 => B
+    expect([classifier classifyFeatures:features3]).to.equal(@"B");
     
-    [classifier trainFeatures:features3 doNotGenerateOutput:1];
+    [classifier trainFeatures:features3 doNotGenerateOutput:@"B"];
     
-    // features3 => 2 is right answer
-    expect([classifier classifyFeatures:features3]).to.equal(2);
+    // features3 => C is right answer
+    expect([classifier classifyFeatures:features3]).to.equal(@"C");
 }
 
 @end

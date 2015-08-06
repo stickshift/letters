@@ -147,4 +147,37 @@
     }
 }
 
+/**
+ * Parses an image thats not evenly divisible by resolution
+ */
+- (void) testParseUnevenImageSize
+{
+    NSUInteger width = 320;
+    NSUInteger height = 568;
+    UIImage* image = nil;
+    
+    /* Setup */
+    
+    // Create a UIImage that's completely empty
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    /* Run */
+    
+    SampleGridFeatureExtractor* featureExtractor = [[SampleGridFeatureExtractor alloc] init];
+    NSArray* features = [featureExtractor extract:image];
+    
+    /* Verify */
+    
+    // Check size of features
+    expect(features.count).to.equal(featureExtractor.resolution * featureExtractor.resolution);
+    
+    // Verify pattern is all 0s
+    for (NSNumber* f in features)
+    {
+        expect([f unsignedIntegerValue]).to.equal(0);
+    }
+}
+
 @end

@@ -20,14 +20,19 @@
  */
 @interface TestingViewController : ChalkboardViewController
 
+@property (weak, nonatomic) IBOutlet UIButton* eraseButton;
+
+@property (weak, nonatomic) IBOutlet UIButton* submitButton;
+
+@property (weak, nonatomic) IBOutlet UIButton* tryAgainButton;
+
+@property (weak, nonatomic) IBOutlet UIButton* youGotItButton;
+
 /** Defines the drawing area where the target drawing is displayed while we guess */
 @property (weak, nonatomic) IBOutlet UIView* targetDrawingArea;
 
 /** Current guess */
-@property (strong, readonly) NSString* currentGuess;
-
-/** Index of currently selected guess from vocabulary */
-@property NSUInteger currentGuessIndex;
+@property (strong, nonatomic) NSString* currentGuess;
 
 /** The feature extraction algorithm used to process the drawings */
 @property (strong, nonatomic) NSObject<FeatureExtractor>* featureExtractor;
@@ -44,5 +49,10 @@
  * Tells us the current guess is wrong and to try again.
  */
 - (IBAction) tryAgain:(id)sender;
+
+/**
+ * Tells us the current guess is right!
+ */
+- (IBAction) youGotIt:(id)sender;
 
 @end

@@ -75,7 +75,7 @@
     OCMStub([featureExtractor extract:image]).andReturn(features);
     
     // Training
-    OCMExpect([classifier trainFeatures:features generateOutput:currentLetter]);
+    OCMExpect([classifier trainFeatures:features generateOutput:alphabet[currentLetter]]);
     
     /* Run */
 

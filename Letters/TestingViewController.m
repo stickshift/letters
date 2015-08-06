@@ -21,6 +21,8 @@
     [super viewDidLoad];
     
     self.textView.hidden = YES;
+    self.tryAgainButton.hidden = YES;
+    self.youGotItButton.hidden = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -35,12 +37,28 @@
     self.tabBarController.selectedIndex = self.modeSelector.selectedSegmentIndex;
 }
 
+- (IBAction) erase:(id)sender
+{
+    // Hide text view on erase
+    self.textView.hidden = YES;
+    
+    // Make sure chalkboard controls are visible
+    self.eraseButton.hidden = NO;
+    self.submitButton.hidden = NO;
+
+    [super erase:sender];
+}
+
 /**
  * @see ChalkboardViewController.h
  */
 - (IBAction) submit:(id)sender
 {
     [super submit:sender];
+    
+    // Hide chalkboard controls
+    self.eraseButton.hidden = YES;
+    self.submitButton.hidden = YES;
     
     // Animate the drawing down to targetDrawingArea
     [UIView animateWithDuration:0.5 animations:^{
@@ -49,16 +67,23 @@
 
     } completion:^(BOOL finished) {
         
-        if (!self.classifier.vocabulary.count)
-        {
-            [self print:@"No idea! You haven't taught me anything yet." andThen:nil];
-            return;
-        }
-
         NSString* guess = [self classify];
         
-        [self print:[NSString stringWithFormat:@"Is it a %@?", guess] andThen:nil];
+        if (guess == nil)
+        {
+            [self print:@"I'm out of guesses!" andThen:^{
+                [NSThread sleepForTimeInterval:0.5];
+                [self erase:self];
+            }];
+        }
         
+        else
+        {
+            [self print:[NSString stringWithFormat:@"Is it a %@?", guess] andThen:^{
+                self.tryAgainButton.hidden = NO;
+                self.youGotItButton.hidden = NO;
+            }];
+        }
     }];
 }
 
@@ -69,15 +94,14 @@
 {
     if (!self.classifier.vocabulary.count)
     {
-        return nil;
+        return @"?";
     }
     
     // Extract features
     NSArray* features = [self.featureExtractor extract:self.imageView.image];
     
     // Classify them
-    self.currentGuessIndex = [self.classifier classifyFeatures:features];
-    _currentGuess = self.classifier.vocabulary[self.currentGuessIndex];
+    self.currentGuess = [self.classifier classifyFeatures:features];
     
     return self.currentGuess;
 }
@@ -87,12 +111,30 @@
  */
 - (IBAction) tryAgain:(id)sender
 {
+    // Hide feedback controls
+    self.tryAgainButton.hidden = YES;
+    self.youGotItButton.hidden = YES;
+    self.textView.hidden = YES;
+
     // Tell the classifier this guess was wrong
     NSArray* features = [self.featureExtractor extract:self.imageView.image];
-    [self.classifier trainFeatures:features doNotGenerateOutput:self.currentGuessIndex];
+    [self.classifier trainFeatures:features doNotGenerateOutput:self.currentGuess];
     
     // Try again
     [self submit:sender];
+}
+
+/**
+ * @see TestingViewController.h
+ */
+- (IBAction) youGotIt:(id)sender
+{
+    // Hide feedback controls
+    self.tryAgainButton.hidden = YES;
+    self.youGotItButton.hidden = YES;
+    self.textView.hidden = YES;
+    
+    [self erase:sender];
 }
 
 @end

@@ -19,16 +19,16 @@
 /**
  * Trains classifier with positive example.
  */
-- (void) trainFeatures:(NSArray*)features generateOutput:(NSUInteger)output;
+- (void) trainFeatures:(NSArray*)features generateOutput:(NSString*)output;
 
 /**
  * Trains classifier with negative example.
  */
-- (void) trainFeatures:(NSArray*)features doNotGenerateOutput:(NSUInteger)output;
+- (void) trainFeatures:(NSArray*)features doNotGenerateOutput:(NSString*)output;
 
 /**
  * Classifies features according to prior training.
  */
-- (NSUInteger) classifyFeatures:(NSArray*)features;
+- (NSString*) classifyFeatures:(NSArray*)features;
 
 @end

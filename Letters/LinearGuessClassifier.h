@@ -17,16 +17,16 @@
 /**
  * @see Classifier.h
  */
-- (void) trainFeatures:(NSArray*)features generateOutput:(NSUInteger)output;
+- (void) trainFeatures:(NSArray*)features generateOutput:(NSString*)output;
 
 /**
  * @see Classifier.h
  */
-- (void) trainFeatures:(NSArray*)features doNotGenerateOutput:(NSUInteger)output;
+- (void) trainFeatures:(NSArray*)features doNotGenerateOutput:(NSString*)output;
 
 /**
  * @see Classifier.h
  */
-- (NSUInteger) classifyFeatures:(NSArray*)features;
+- (NSString*) classifyFeatures:(NSArray*)features;
 
 @end
