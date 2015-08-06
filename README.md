@@ -10,7 +10,7 @@ give people a way to conceptualize the natural sciences are an enormous market.
 I've seen how much joy they bring to my own kids. Computer science is ripe for
 this kind of approach.
 
-Letters is a platform for inspiring curiosity about Artifical Intelligence. One
+Letters is a platform for inspiring curiosity about Artificial Intelligence. One
 part children's game, one part algorithm development kit, Letters gives you a
 way to play with the basic concepts of supervised learning.
 
