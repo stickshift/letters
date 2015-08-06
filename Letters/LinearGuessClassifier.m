@@ -11,6 +11,7 @@
 @interface LinearGuessClassifier()
 {
     NSMutableArray* _vocabulary;
+    NSMutableDictionary* _positiveExampleMap;
     NSMutableDictionary* _negativeExampleMap;
 }
 @end
@@ -27,6 +28,7 @@
     if (self)
     {
         _vocabulary = [NSMutableArray array];
+        _positiveExampleMap = [NSMutableDictionary dictionary];
         _negativeExampleMap = [NSMutableDictionary dictionary];
     }
     return self;
@@ -41,6 +43,8 @@
     {
         [_vocabulary addObject:output];
     }
+    
+    _positiveExampleMap[features] = output;
 }
 
 /**
@@ -66,8 +70,15 @@
  */
 - (NSString*) classifyFeatures:(NSArray*)features
 {
+    // Check for exact match positive examples first
+    NSString* result = _positiveExampleMap[features];
+    if (result != nil)
+    {
+        return result;
+    }
+    
+    // Otherwise, return first term in vocabulary not in negative examples
     NSMutableArray* negativeExamples = _negativeExampleMap[features];
-
     for (NSString* s in _vocabulary)
     {
         if (![negativeExamples containsObject:s])
