@@ -68,8 +68,12 @@
                                     <action selector="submit:" destination="znr-kf-0Yh" eventType="touchUpInside" id="cD1-rj-vqc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eET-6L-dme">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eET-6L-dme">
                                 <rect key="frame" x="16" y="504" width="78" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="lrH-Oc-SGO"/>
+                                    <constraint firstAttribute="height" constant="44" id="zNR-DO-ISV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Try Again">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,8 +82,12 @@
                                     <action selector="tryAgain:" destination="znr-kf-0Yh" eventType="touchUpInside" id="V1y-cZ-Zav"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se8-GO-xQb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se8-GO-xQb">
                                 <rect key="frame" x="214" y="504" width="90" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="NUo-Rt-2GQ"/>
+                                    <constraint firstAttribute="height" constant="44" id="vWN-JF-RXU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="You Got It!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,16 +101,20 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="wga-20-hIN" secondAttribute="centerX" constant="0.5" id="1zs-6O-A8O"/>
                             <constraint firstItem="TTd-04-XwD" firstAttribute="trailing" secondItem="RaA-5M-nug" secondAttribute="trailingMargin" id="50v-ZS-zOi"/>
+                            <constraint firstItem="eET-6L-dme" firstAttribute="leading" secondItem="RaA-5M-nug" secondAttribute="leadingMargin" id="5ln-Nv-0uF"/>
                             <constraint firstAttribute="centerX" secondItem="sBU-Ph-4OG" secondAttribute="centerX" constant="-0.5" id="64b-Dt-cJl"/>
                             <constraint firstItem="sBU-Ph-4OG" firstAttribute="top" secondItem="X3Y-U7-pLc" secondAttribute="bottom" constant="8" id="7wh-eK-0DW"/>
+                            <constraint firstItem="Se8-GO-xQb" firstAttribute="trailing" secondItem="RaA-5M-nug" secondAttribute="trailingMargin" id="8Mq-To-XlP"/>
                             <constraint firstItem="hhX-te-Ned" firstAttribute="trailing" secondItem="RaA-5M-nug" secondAttribute="trailingMargin" id="97c-t0-TaF"/>
                             <constraint firstItem="TTd-04-XwD" firstAttribute="top" secondItem="X3Y-U7-pLc" secondAttribute="bottom" constant="44" id="HQO-oJ-Bmc"/>
                             <constraint firstItem="8IG-D5-xqv" firstAttribute="top" secondItem="wga-20-hIN" secondAttribute="bottom" constant="28" id="Jih-gp-Qyi"/>
+                            <constraint firstItem="8IG-D5-xqv" firstAttribute="top" secondItem="eET-6L-dme" secondAttribute="bottom" constant="20" id="Kwc-PQ-sly"/>
                             <constraint firstItem="kzM-8k-fbb" firstAttribute="leading" secondItem="RaA-5M-nug" secondAttribute="leadingMargin" id="PtY-Gk-dUT"/>
                             <constraint firstAttribute="centerX" secondItem="fcg-3B-B1k" secondAttribute="centerX" id="QAb-8f-8Xo"/>
                             <constraint firstItem="8IG-D5-xqv" firstAttribute="top" secondItem="fcg-3B-B1k" secondAttribute="bottom" constant="20" id="TxI-q9-uOB"/>
                             <constraint firstItem="TTd-04-XwD" firstAttribute="leading" secondItem="RaA-5M-nug" secondAttribute="leadingMargin" id="bvT-7o-fX4"/>
                             <constraint firstItem="hNW-AO-YbL" firstAttribute="top" secondItem="X3Y-U7-pLc" secondAttribute="bottom" constant="44" id="eMK-cg-U5d"/>
+                            <constraint firstItem="8IG-D5-xqv" firstAttribute="top" secondItem="Se8-GO-xQb" secondAttribute="bottom" constant="20" id="ftY-ud-Sep"/>
                             <constraint firstItem="hNW-AO-YbL" firstAttribute="leading" secondItem="RaA-5M-nug" secondAttribute="leadingMargin" id="hzj-Aj-KRF"/>
                             <constraint firstItem="8IG-D5-xqv" firstAttribute="top" secondItem="hNW-AO-YbL" secondAttribute="bottom" constant="72" id="k1d-7X-JD9"/>
                             <constraint firstItem="8IG-D5-xqv" firstAttribute="top" secondItem="hhX-te-Ned" secondAttribute="bottom" constant="20" id="l71-ih-Cfu"/>
