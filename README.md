@@ -32,3 +32,7 @@ than the algorithms in the box? Want to try your hand at gradient descent or
 building a neural network? It's easy to drop in alternative algorithms and see
 how they fare. Eventually, I'd love to make it so you can record one training
 set and run it through several different algorithms to test them side by side.
+
+![Training](/Design/Training.png =250x)
+![Testing](/Design/Testing.png =250x)
+
