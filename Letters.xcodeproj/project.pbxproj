@@ -24,6 +24,8 @@
 		4E0C0F9C1B72C9B1002BBDD2 /* LinearGuessClassifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */; };
 		4E0C0F9F1B72CEAE002BBDD2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0F9E1B72CEAE002BBDD2 /* RootViewController.m */; };
 		4E0C0FA21B730415002BBDD2 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0FA11B730415002BBDD2 /* Utils.m */; };
+		4E0C0FA41B730E9D002BBDD2 /* SampleGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E0C0FA31B730E9D002BBDD2 /* SampleGridView.xib */; };
+		4E0C0FA71B730EE5002BBDD2 /* SampleGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C0FA61B730EE5002BBDD2 /* SampleGridViewController.m */; };
 		4E3115221B6B225700988EDE /* typing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115211B6B225700988EDE /* typing.wav */; };
 		4E3115271B6BB0CA00988EDE /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115231B6BB0CA00988EDE /* check.png */; };
 		4E3115281B6BB0CA00988EDE /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3115241B6BB0CA00988EDE /* check@2x.png */; };
@@ -78,6 +80,9 @@
 		4E0C0F9E1B72CEAE002BBDD2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4E0C0FA01B730415002BBDD2 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		4E0C0FA11B730415002BBDD2 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		4E0C0FA31B730E9D002BBDD2 /* SampleGridView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleGridView.xib; sourceTree = "<group>"; };
+		4E0C0FA51B730EE5002BBDD2 /* SampleGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleGridViewController.h; sourceTree = "<group>"; };
+		4E0C0FA61B730EE5002BBDD2 /* SampleGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleGridViewController.m; sourceTree = "<group>"; };
 		4E3115211B6B225700988EDE /* typing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = typing.wav; path = Letters/Resources/typing.wav; sourceTree = "<group>"; };
 		4E3115231B6BB0CA00988EDE /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = Letters/Resources/check.png; sourceTree = "<group>"; };
 		4E3115241B6BB0CA00988EDE /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "check@2x.png"; path = "Letters/Resources/check@2x.png"; sourceTree = "<group>"; };
@@ -181,6 +186,8 @@
 				4E0C0F931B72C446002BBDD2 /* SampleGridFeatureExtractor.m */,
 				4E0C0F9A1B72C9B1002BBDD2 /* LinearGuessClassifier.h */,
 				4E0C0F9B1B72C9B1002BBDD2 /* LinearGuessClassifier.m */,
+				4E0C0FA51B730EE5002BBDD2 /* SampleGridViewController.h */,
+				4E0C0FA61B730EE5002BBDD2 /* SampleGridViewController.m */,
 				4E84C3F01B69D4FC003DE2B2 /* AppDelegate.h */,
 				4E84C3F11B69D4FC003DE2B2 /* AppDelegate.m */,
 				4E0C0F9D1B72CEAE002BBDD2 /* RootViewController.h */,
@@ -190,6 +197,7 @@
 				4E0C0FA01B730415002BBDD2 /* Utils.h */,
 				4E0C0FA11B730415002BBDD2 /* Utils.m */,
 				4E84C3FB1B69D4FD003DE2B2 /* LaunchScreen.xib */,
+				4E0C0FA31B730E9D002BBDD2 /* SampleGridView.xib */,
 				4E84C3F61B69D4FD003DE2B2 /* Main.storyboard */,
 				4E0C0F7E1B723276002BBDD2 /* Demo.storyboard */,
 				4E84C3F91B69D4FD003DE2B2 /* Images.xcassets */,
@@ -332,6 +340,7 @@
 				4E84C3FD1B69D4FD003DE2B2 /* LaunchScreen.xib in Resources */,
 				4E84C3FA1B69D4FD003DE2B2 /* Images.xcassets in Resources */,
 				4E3115281B6BB0CA00988EDE /* check@2x.png in Resources */,
+				4E0C0FA41B730E9D002BBDD2 /* SampleGridView.xib in Resources */,
 				4E31152E1B6BB1A000988EDE /* chalkboard@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E0C0FA71B730EE5002BBDD2 /* SampleGridViewController.m in Sources */,
 				4E84C3F21B69D4FC003DE2B2 /* AppDelegate.m in Sources */,
 				4E0C0FA21B730415002BBDD2 /* Utils.m in Sources */,
 				4E84C3EF1B69D4FC003DE2B2 /* main.m in Sources */,

@@ -7,6 +7,8 @@
 //
 
 #import "TestingViewController.h"
+#import "SampleGridFeatureExtractor.h"
+#import "SampleGridViewController.h"
 
 @interface TestingViewController()
 
@@ -23,6 +25,18 @@
     self.textView.hidden = YES;
     self.tryAgainButton.hidden = YES;
     self.youGotItButton.hidden = YES;
+    
+    // Load sample grid visualization
+    if ([self.featureExtractor isKindOfClass:[SampleGridFeatureExtractor class]])
+    {
+        SampleGridViewController* gridViewController = [[SampleGridViewController alloc] initWithNibName:@"SampleGridView"
+                                                                                                  bundle:[NSBundle mainBundle]];
+        gridViewController.featureExtractor = (SampleGridFeatureExtractor*)self.featureExtractor;
+        
+        [self addChildViewController:gridViewController];
+        [self.view addSubview:gridViewController.view];
+        gridViewController.view.frame = self.imageView.frame;
+    }
 }
 
 - (void) viewWillAppear:(BOOL)animated

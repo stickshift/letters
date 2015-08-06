@@ -40,7 +40,7 @@
 {
     [super touchesBegan:touches withEvent:event];
     
-    _lastPoint = [[touches anyObject] locationInView:self.view];
+    _lastPoint = [[touches anyObject] locationInView:self.imageView];
 }
 
 /**
@@ -50,11 +50,11 @@
 {
     [super touchesMoved:touches withEvent:event];
     
-    CGPoint currentPoint = [[touches anyObject] locationInView:self.view];
-
-    UIGraphicsBeginImageContext(self.view.frame.size);
+    CGPoint currentPoint = [[touches anyObject] locationInView:self.imageView];
     
-    [self.imageView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIGraphicsBeginImageContext(self.imageView.frame.size);
+    
+    [self.imageView.image drawInRect:self.imageView.bounds];
     
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), _lastPoint.x, _lastPoint.y);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);

@@ -15,6 +15,11 @@
 @property (nonatomic) NSUInteger resolution;
 
 /**
+ * Returns block size that would be used to sample image.
+ */
+- (CGSize) blockSizeOfImage:(CGSize)imageSize;
+
+/**
  * @see FeatureExtractor.h
  */
 - (NSArray*) extract:(UIImage*)image;

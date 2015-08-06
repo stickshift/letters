@@ -29,27 +29,32 @@ static BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger b
     return self;
 }
 
+/**
+ * @see SampleGridFeatureExtractor.h
+ */
+- (CGSize) blockSizeOfImage:(CGSize)imageSize
+{
+    return CGSizeMake(imageSize.width / self.resolution, imageSize.height / self.resolution);
+}
+
 - (NSArray*) extract:(UIImage*)image
 {
     NSMutableArray* features = [NSMutableArray arrayWithCapacity:self.resolution*self.resolution];
     
     NSData* pixels = [image pixelsInRGBA8888];
-    
-    NSUInteger width = image.size.width;
-    NSUInteger height = image.size.height;
 
     // Use ceil to avoid under sampling
-    NSUInteger blockWidth = ceil((double)width / self.resolution);
-    NSUInteger blockHeight = ceil((double)height / self.resolution);
+    CGSize imageSize = image.size;
+    CGSize blockSize = [self blockSizeOfImage:imageSize];
     
-    NSLog(@"%@ - Extracting features from %lu x %lu image with blocks %lu x %lu", TAG, width, height, blockWidth, blockHeight);
+    NSLog(@"%@ - Extracting features from %f x %f image with blocks %f x %f", TAG, imageSize.width, imageSize.height, blockSize.width, blockSize.height);
     
     NSUInteger featureCount = 0;
-    for (NSUInteger y = 0;y < height;y += blockHeight)
+    for (CGFloat y = 0;y < imageSize.height;y += blockSize.height)
     {
-        for (NSUInteger x = 0;x < width;x += blockWidth)
+        for (CGFloat x = 0;x < imageSize.width;x += blockSize.width)
         {
-            if (containsPixelsInRect(pixels, CGRectMake(x, y, blockWidth, blockHeight), 4, width * 4))
+            if (containsPixelsInRect(pixels, CGRectMake(x, y, blockSize.width, blockSize.height), 4, imageSize.width * 4))
             {
                 [features addObject:@1];
                 featureCount++;
@@ -70,11 +75,11 @@ BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger bytesPer
 {
     uint8_t* data = (uint8_t*)[pixelsInRGBA bytes];
     
-    for (NSUInteger y = rect.origin.y;y < rect.origin.y + rect.size.height;y++)
+    for (CGFloat y = rect.origin.y;y < rect.origin.y + rect.size.height;y++)
     {
-        for (NSUInteger x = rect.origin.x;x < rect.origin.x + rect.size.width;x++)
+        for (CGFloat x = rect.origin.x;x < rect.origin.x + rect.size.width;x++)
         {
-            NSUInteger offset = y * bytesPerRow + x * bytesPerPixel;
+            NSUInteger offset = round(y) * bytesPerRow + round(x) * bytesPerPixel;
             
             // If image dimensions are not evenly divisible by resolution, we may walk off the array
             // here. Make sure we bail first.
