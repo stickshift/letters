@@ -145,6 +145,10 @@
     self.youGotItButton.hidden = YES;
     self.textView.hidden = YES;
     
+    // Now that we know we're right, train the classifier with a positive example
+    NSArray* features = [self.featureExtractor extract:self.imageView.image];
+    [self.classifier trainFeatures:features generateOutput:self.currentGuess];
+    
     [self erase:sender];
 }
 

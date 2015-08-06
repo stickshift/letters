@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     self.featureExtractor = [[SampleGridFeatureExtractor alloc] init];
-    self.featureExtractor.resolution = 3;
+    self.featureExtractor.resolution = 4;
     
     self.classifier = [[LinearGuessClassifier alloc] init];
     self.teachingViewController = self.viewControllers[0];

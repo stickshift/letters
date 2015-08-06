@@ -162,7 +162,43 @@
     OCMVerifyAll((id)viewController);
 }
 
-- (void) testYouGotIt
+- (void) testYouGotItTrainsClassifier
+{
+    NSString* currentGuess = @"C";
+    id image = OCMClassMock([UIImage class]);
+    id imageView = OCMClassMock([UIImageView class]);
+    id features = OCMClassMock([NSArray class]);
+    id featureExtractor = OCMProtocolMock(@protocol(FeatureExtractor));
+    id classifier = OCMProtocolMock(@protocol(Classifier));
+    
+    /* Expect */
+
+    // Retrieve image
+    OCMStub([imageView image]).andReturn(image);
+    
+    // Extract features
+    OCMStub([featureExtractor extract:image]).andReturn(features);
+    
+    // Training
+    OCMExpect([classifier trainFeatures:features generateOutput:currentGuess]);
+    
+    /* Run */
+    
+    TestingViewController* viewController = [[TestingViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.currentGuess = currentGuess;
+    viewController.imageView = imageView;
+    viewController.featureExtractor = featureExtractor;
+    viewController.classifier = classifier;
+    [viewController view];
+    
+    [viewController youGotIt:nil];
+    
+    /* Verify */
+    
+    OCMVerifyAll(classifier);
+}
+
+- (void) testYouGotItClearsBoard
 {
     TestingViewController* viewController = OCMPartialMock([[TestingViewController alloc] initWithNibName:nil bundle:nil]);
     
