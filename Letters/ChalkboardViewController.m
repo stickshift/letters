@@ -79,6 +79,9 @@
     NSLog(@"%@ - Erasing chalkboard", TAG);
     
     self.imageView.image = nil;
+
+    // Hide text view on erase
+    self.textView.hidden = YES;
 }
 
 /**

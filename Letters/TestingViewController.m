@@ -39,9 +39,6 @@
 
 - (IBAction) erase:(id)sender
 {
-    // Hide text view on erase
-    self.textView.hidden = YES;
-    
     // Make sure chalkboard controls are visible
     self.eraseButton.hidden = NO;
     self.submitButton.hidden = NO;
