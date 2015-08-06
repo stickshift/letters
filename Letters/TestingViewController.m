@@ -94,7 +94,7 @@
 {
     if (!self.classifier.vocabulary.count)
     {
-        return @"?";
+        return nil;
     }
     
     // Extract features
