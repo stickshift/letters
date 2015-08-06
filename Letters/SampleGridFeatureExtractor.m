@@ -61,7 +61,7 @@ static BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger b
         }
     }
     
-    NSLog(@"%@ - Extracted %lu features", TAG, featureCount);
+    NSLog(@"%@ - Extracted %lu features: %@", TAG, featureCount, features);
     
     return features;
 }
