@@ -33,6 +33,5 @@ building a neural network? It's easy to drop in alternative algorithms and see
 how they fare. Eventually, I'd love to make it so you can record one training
 set and run it through several different algorithms to test them side by side.
 
-![Training](/Design/Training.png =250x)
-![Testing](/Design/Testing.png =250x)
-
+<img src="https://github.com/stickshift/letters/raw/master/Design/Training.png" width="250">
+<img src="https://github.com/stickshift/letters/raw/master/Design/Testing.png" width="250">
