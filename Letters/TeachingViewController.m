@@ -35,38 +35,6 @@
     self.modeSelector.selectedSegmentIndex = 0;
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self showTutorial];
-}
-
-- (void) showTutorial
-{
-    if (!isRunningTests() && !_playedTutorial)
-    {
-        _playedTutorial = YES;
-        
-        [self print:@"Would you like to play a game of letters?" andThen:^{
-            [NSThread sleepForTimeInterval:1.0];
-            
-            [self print:@"First, teach me to draw a letter" andThen:^{
-                [NSThread sleepForTimeInterval:1.0];
-                
-                [self print:@"Then test me and I will guess" andThen:^{
-                    [NSThread sleepForTimeInterval:1.0];
-                    
-                    [self print:@"Let's play!" andThen:^{
-                        [NSThread sleepForTimeInterval:1.0];
-                        [self erase:nil];
-                    }];
-                }];
-            }];
-        }];
-    }
-}
-
 - (IBAction)toggleModes:(id)sender
 {
      self.tabBarController.selectedIndex = self.modeSelector.selectedSegmentIndex;
