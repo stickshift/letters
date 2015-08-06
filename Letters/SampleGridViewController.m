@@ -63,6 +63,7 @@
     CGContextStrokePath(UIGraphicsGetCurrentContext());
     
     self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    self.imageView.alpha = 0.3;
     
     UIGraphicsEndImageContext();
 }

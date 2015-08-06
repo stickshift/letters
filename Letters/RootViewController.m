@@ -12,7 +12,7 @@
 
 @interface RootViewController()
 
-@property (nonatomic) NSObject<FeatureExtractor>* featureExtractor;
+@property (nonatomic) SampleGridFeatureExtractor* featureExtractor;
 
 @property (nonatomic) NSObject<Classifier>* classifier;
 
@@ -29,6 +29,8 @@
     [super viewDidLoad];
     
     self.featureExtractor = [[SampleGridFeatureExtractor alloc] init];
+    self.featureExtractor.resolution = 3;
+    
     self.classifier = [[LinearGuessClassifier alloc] init];
     self.teachingViewController = self.viewControllers[0];
     self.testingViewController = self.viewControllers[1];
