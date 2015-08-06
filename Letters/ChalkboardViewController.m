@@ -2,11 +2,14 @@
 //  ChalkboardViewController.m
 //  Letters
 //
-//  Created by Andrew Young on 7/31/15.
+//  Created by Andrew Young on 8/5/15.
 //  Copyright (c) 2015 Andrew Young. All rights reserved.
 //
 
 #import "ChalkboardViewController.h"
+
+// Constants
+#define TAG @"ChalkboardViewController"
 
 @interface ChalkboardViewController ()
 {
@@ -31,36 +34,24 @@
 }
 
 /**
- * @see ChalkboardViewController.h
- */
-- (IBAction) erase:(id)sender
-{
-    self.imageView.image = nil;
-}
-
-/**
- * @see ChalkboardViewController.h
- */
-- (IBAction) submit:(id)sender
-{
-    
-}
-
-/**
- * Records start of stroke
+ * Starts tracking stroke
  */
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesBegan:touches withEvent:event];
+    
     _lastPoint = [[touches anyObject] locationInView:self.view];
 }
 
 /**
- * Renders stroke on screen
+ * Tracks stroke and renders it on screen
  */
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    CGPoint currentPoint = [[touches anyObject] locationInView:self.view];
+    [super touchesMoved:touches withEvent:event];
     
+    CGPoint currentPoint = [[touches anyObject] locationInView:self.view];
+
     UIGraphicsBeginImageContext(self.view.frame.size);
     
     [self.imageView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -78,6 +69,27 @@
     UIGraphicsEndImageContext();
     
     _lastPoint = currentPoint;
+}
+
+/**
+ * @see ChalkboardViewController.h
+ */
+- (IBAction) erase:(id)sender
+{
+    NSLog(@"%@ - Erasing chalkboard", TAG);
+    
+    self.imageView.image = nil;
+
+    // Hide text view on erase
+    self.textView.hidden = YES;
+}
+
+/**
+ * @see ChalkboardViewController.h
+ */
+- (IBAction) submit:(id)sender
+{
+    NSLog(@"%@ - Submitting chalkboard", TAG);
 }
 
 @end

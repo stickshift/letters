@@ -1,5 +1,5 @@
 //
-//  Classifier.h
+//  LinearGuessClassifier.h
 //  Letters
 //
 //  Created by Andrew Young on 8/5/15.
@@ -7,27 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Classifier.h"
 
 /**
- * A protocol that defines interface for classifier algorithms.
+ * A very simple Classifier that just guesses any of the characters it's seen
  */
-@protocol Classifier <NSObject>
-
-/** The set of letters we have been trained on */
-@property (strong, nonatomic) NSArray* vocabulary;
+@interface LinearGuessClassifier : NSObject<Classifier>
 
 /**
- * Trains classifier with positive example.
+ * @see Classifier.h
  */
 - (void) trainFeatures:(NSArray*)features generateOutput:(NSString*)output;
 
 /**
- * Trains classifier with negative example.
+ * @see Classifier.h
  */
 - (void) trainFeatures:(NSArray*)features doNotGenerateOutput:(NSString*)output;
 
 /**
- * Classifies features according to prior training.
+ * @see Classifier.h
  */
 - (NSString*) classifyFeatures:(NSArray*)features;
 

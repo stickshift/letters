@@ -7,11 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "Utils.h"
 
 // Constants
 #define TAG @"AppDelegate"
-
-static BOOL isRunningTests();
 
 @implementation AppDelegate
 
@@ -54,10 +53,3 @@ static BOOL isRunningTests();
 }
 
 @end
-
-static BOOL isRunningTests(void)
-{
-    NSDictionary* environment = [[NSProcessInfo processInfo] environment];
-    NSString* injectBundle = environment[@"XCInjectBundle"];
-    return [[injectBundle pathExtension] isEqualToString:@"xctest"];
-}

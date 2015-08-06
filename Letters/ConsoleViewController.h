@@ -2,31 +2,28 @@
 //  ConsoleViewController.h
 //  Letters
 //
-//  Created by Andrew Young on 7/29/15.
+//  Created by Andrew Young on 8/4/15.
 //  Copyright (c) 2015 Andrew Young. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Script.h"
 
+/**
+ * Base class for view controllers that print output to the "console"
+ */
 @interface ConsoleViewController : UIViewController
 
-/** TRUE if play is paused waiting for confirm to be called */
-@property (nonatomic, readonly) BOOL waitingForConfirmation;
+/** The text view where content is printed */
+@property (weak, nonatomic) IBOutlet UITextView* textView;
 
 /**
- * Starts playing a script on the Console
+ * Returns the special token used to delimit the console cursor
  */
-- (void) play:(Script*)script andThen:(void (^)())finished;
++ (NSString*) cursor;
 
 /**
- * Confirms a question and lets play proceed.
+ * Animates msg being printed on console and calls completion block when animation is finished.
  */
-- (IBAction) confirm:(id)sender;
-
-/**
- * Resets console to empty
- */
-- (void) clear;
+- (void) print:(NSString*)msg andThen:(void (^)())then;
 
 @end

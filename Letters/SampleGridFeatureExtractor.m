@@ -1,18 +1,24 @@
 //
-//  PatternParser.m
+//  SampleGridFeatureExtractor.m
 //  Letters
 //
-//  Created by Andrew Young on 8/3/15.
+//  Created by Andrew Young on 8/5/15.
 //  Copyright (c) 2015 Andrew Young. All rights reserved.
 //
 
-#import "PatternParser.h"
+#import "SampleGridFeatureExtractor.h"
 #import "UIImage+Letters.h"
+
+// Constants
+#define TAG @"SampleGridFeatureExtractor"
 
 static BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger bytesPerPixel, NSUInteger bytesPerRow);
 
-@implementation PatternParser
+@implementation SampleGridFeatureExtractor
 
+/**
+ * Ctor
+ */
 - (instancetype) init
 {
     self = [super init];
@@ -23,38 +29,42 @@ static BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger b
     return self;
 }
 
-/**
- * @see PatternParser.h
- */
-- (NSArray*) parse:(UIImage*)image
+- (NSArray*) extract:(UIImage*)image
 {
-    NSMutableArray* pattern = [NSMutableArray arrayWithCapacity:self.resolution*self.resolution];
+    NSMutableArray* features = [NSMutableArray arrayWithCapacity:self.resolution*self.resolution];
     
-    NSUInteger width = image.size.width;
-    NSUInteger blockWidth = width / self.resolution;
-    NSUInteger height = image.size.height;
-    NSUInteger blockHeight = height / self.resolution;
     NSData* pixels = [image pixelsInRGBA8888];
     
+    NSUInteger width = image.size.width;
+    NSUInteger height = image.size.height;
+
+    // Use ceil to avoid under sampling
+    NSUInteger blockWidth = ceil((double)width / self.resolution);
+    NSUInteger blockHeight = ceil((double)height / self.resolution);
+    
+    NSLog(@"%@ - Extracting features from %lu x %lu image with blocks %lu x %lu", TAG, width, height, blockWidth, blockHeight);
+    
+    NSUInteger featureCount = 0;
     for (NSUInteger y = 0;y < height;y += blockHeight)
     {
         for (NSUInteger x = 0;x < width;x += blockWidth)
         {
             if (containsPixelsInRect(pixels, CGRectMake(x, y, blockWidth, blockHeight), 4, width * 4))
             {
-                [pattern addObject:@1];
+                [features addObject:@1];
+                featureCount++;
             }
             else
             {
-                [pattern addObject:@0];
+                [features addObject:@0];
             }
         }
     }
-
-    return pattern;
+    
+    NSLog(@"%@ - Extracted %lu features: %@", TAG, featureCount, features);
+    
+    return features;
 }
-
-@end
 
 BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger bytesPerPixel, NSUInteger bytesPerRow)
 {
@@ -65,9 +75,14 @@ BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger bytesPer
         for (NSUInteger x = rect.origin.x;x < rect.origin.x + rect.size.width;x++)
         {
             NSUInteger offset = y * bytesPerRow + x * bytesPerPixel;
-//            CGFloat red   = (data[offset]     * 1.0) / 255.0;
-//            CGFloat green = (data[offset + 1] * 1.0) / 255.0;
-//            CGFloat blue  = (data[offset + 2] * 1.0) / 255.0;
+            
+            // If image dimensions are not evenly divisible by resolution, we may walk off the array
+            // here. Make sure we bail first.
+            if (offset >= pixelsInRGBA.length - 3)
+            {
+                return NO;
+            }
+            
             CGFloat alpha = (data[offset + 3] * 1.0) / 255.0;
             
             if (alpha > 0)
@@ -80,3 +95,4 @@ BOOL containsPixelsInRect(NSData* pixelsInRGBA, CGRect rect, NSUInteger bytesPer
     return NO;
 }
 
+@end

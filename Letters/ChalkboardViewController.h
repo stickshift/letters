@@ -2,24 +2,27 @@
 //  ChalkboardViewController.h
 //  Letters
 //
-//  Created by Andrew Young on 7/31/15.
+//  Created by Andrew Young on 8/5/15.
 //  Copyright (c) 2015 Andrew Young. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface ChalkboardViewController : UIViewController
-
-/** The UIImageView to draw on */
-@property (weak, nonatomic) IBOutlet UIImageView* imageView;
+#import "ConsoleViewController.h"
 
 /**
- * Clears chalkboard
+ * Base class for views that support hand drawing including erasing and submitting.
+ */
+@interface ChalkboardViewController : ConsoleViewController
+
+/** The image view used to render finger strokes */
+@property (weak, nonatomic) IBOutlet UIImageView* imageView;
+
+/** 
+ * Clears the image 
  */
 - (IBAction) erase:(id)sender;
 
-/**
- * Call when user is happy with drawing and ready to submit it
+/** 
+ * Submits the image for processing. Call this when the user is "done" with the drawing. 
  */
 - (IBAction) submit:(id)sender;
 

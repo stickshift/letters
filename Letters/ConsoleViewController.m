@@ -2,7 +2,7 @@
 //  ConsoleViewController.m
 //  Letters
 //
-//  Created by Andrew Young on 7/29/15.
+//  Created by Andrew Young on 8/4/15.
 //  Copyright (c) 2015 Andrew Young. All rights reserved.
 //
 
@@ -11,146 +11,88 @@
 
 // Constants
 #define TAG @"ConsoleViewController"
-#define BLOCK @"\u200A\u258B"
+#define CURSOR @"\u200A\u258B"
+#define INITIAL_DELAY 0.7
 #define DELAY_BETWEEN_CHARACTERS 0.07
-#define DELAY_BETWEEN_LINES 1.0
-#define DELAY_BETWEEN_CONFIRMATION_SAMPLES 0.5
 
 @interface ConsoleViewController()
 
-@property dispatch_queue_t playingQueue;
-@property NSMutableString* buffer;
-@property AVAudioPlayer* typingSound;
-@property BOOL confirmed;
-
-@property (weak, nonatomic) IBOutlet UITextView* textView;
-@property CGFloat lineHeight;
-
-@property (weak, nonatomic) IBOutlet UIButton* confirmButton;
+@property (strong, nonatomic, readonly) dispatch_queue_t animationQueue;
+@property (strong, nonatomic, readonly) AVAudioPlayer* typingSound;
+@property (strong, nonatomic) NSMutableString* buffer;
 
 @end
 
 @implementation ConsoleViewController
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+/**
+ * @see ConsoleViewController.h
+ */
++ (NSString*) cursor
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        self.playingQueue = dispatch_queue_create("playingQueue", DISPATCH_QUEUE_SERIAL);
-        self.buffer = [NSMutableString stringWithString:BLOCK];
-
-        NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
-        self.typingSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:NULL];
-        self.typingSound.numberOfLoops = -1;
-    }
-    return self;
+    return CURSOR;
 }
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
     
-    // Calculate lineHeight
-    NSDictionary* attributes = @{ NSFontAttributeName: self.textView.font };
-    CGRect bounds = [@"H" boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
-                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                    attributes:attributes
-                                       context:nil];
-    self.lineHeight = ceil(bounds.size.height);
+    _animationQueue = dispatch_queue_create("Animation Queue", DISPATCH_QUEUE_SERIAL);
     
-    // Initialize the textView
-    self.textView.editable = NO;
+    NSURL* soundUrl = [[NSBundle mainBundle] URLForResource:@"typing" withExtension:@"wav"];
+    _typingSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:NULL];
+    _typingSound.numberOfLoops = -1;
+    
+    _buffer = [NSMutableString stringWithString:CURSOR];
+    
+    // Initialize textView content
     self.textView.text = self.buffer;
 }
 
 /**
  * @see ConsoleViewController.h
  */
-- (void) play:(Script*)script andThen:(void (^)())finished;
+- (void) print:(NSString*)msg andThen:(void (^)())then
 {
-    dispatch_async(self.playingQueue, ^{
-        
-        NSLog(@"%@ - Playing script", TAG);
-        
-        // Start with a dramatic delay
-        [NSThread sleepForTimeInterval:DELAY_BETWEEN_LINES];
-        
-        NSString* line = [script nextLine];
-        while (line)
-        {
-            // Wait on confirmation request
-            if ([Script isConfirmationRequest:line])
-            {
-                _waitingForConfirmation = YES;
-                
-                [self hideConfirmButton:NO];
-                while (self.waitingForConfirmation)
-                {
-                    [NSThread sleepForTimeInterval:DELAY_BETWEEN_CONFIRMATION_SAMPLES];
-                }
-                [self hideConfirmButton:YES];
-            }
-            
-            // Otherwise, play the line
-            else
-            {
-                [self playLine:line];
-            }
-            
-            // Fetch next line
-            line = [script nextLine];
-            
-            // Insert newline here so the last line doesn't get one
-            if (line && ![Script isConfirmationRequest:line])
-            {
-                [self addString:@"\n"];
-            }
-        }
-        
-        if (finished) finished();
-    });
-}
-
-/**
- * @see ConsoleViewController.h
- */
-- (IBAction) confirm:(id)sender
-{
-    _waitingForConfirmation = NO;
-}
-
-/**
- * @see ConsoleViewController.h
- */
-- (void) clear
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.buffer = [NSMutableString stringWithString:BLOCK];
-        self.textView.text = self.buffer;
-    });
-}
-
-/**
- * Animates a single line one character at a time
- */
-- (void) playLine:(NSString*)line
-{
-    NSLog(@"%@ - Playing line '%@'", TAG, line);
-    
-    [self.typingSound play];
-    for (NSUInteger i = 0;i < line.length;i++)
+    if (!self.animationQueue)
     {
-        // Insert each character from line into buffer
-        [self addCharacter:[line characterAtIndex:i]];
-        
-        // Delay between characters
-        [NSThread sleepForTimeInterval:DELAY_BETWEEN_CHARACTERS];
+        return;
     }
-    [self.typingSound stop];
-    
-    // Delay between lines
-    [NSThread sleepForTimeInterval:DELAY_BETWEEN_LINES];
+
+    // Reset buffer
+    if (self.buffer.length > CURSOR.length)
+    {
+        [self.buffer setString:CURSOR];
+        self.textView.text = self.buffer;
+    }
+
+    // Make sure textView is visible
+    self.textView.hidden = NO;
+
+    dispatch_async(self.animationQueue, ^{
+
+        NSLog(@"%@ - Printing script", TAG);
+
+        // Start with a dramatic delay
+        [NSThread sleepForTimeInterval:INITIAL_DELAY];
+
+        [self.typingSound play];
+        for (NSUInteger i = 0;i < msg.length;i++)
+        {
+            // Insert each character from line into buffer
+            [self addCharacter:[msg characterAtIndex:i]];
+            
+            // Delay between characters
+            [NSThread sleepForTimeInterval:DELAY_BETWEEN_CHARACTERS];
+        }
+        [self.typingSound stop];
+        
+        if (then)
+        {
+            // Always dispatch on main queue. Prevents clients from having to do this themselves.
+            dispatch_async(dispatch_get_main_queue(), ^{ then(); });
+        }
+    });
 }
 
 /**
@@ -171,36 +113,6 @@
         [self.buffer insertString:s atIndex:self.buffer.length - 2];
         
         self.textView.text = self.buffer;
-        
-        if ([self viewWillOverflow])
-        {
-            NSLog(@"%@ - Resetting console", TAG);
-            self.buffer = [NSMutableString stringWithFormat:@"%@%@", s, BLOCK];
-            self.textView.text = self.buffer;
-        }
-    });
-}
-
-/**
- * Utility that decides if UITextView is full
- */
-- (BOOL) viewWillOverflow
-{
-    if (self.textView.frame.size.height - self.textView.contentSize.height < self.lineHeight)
-    {
-        return YES;
-    }
-    
-    return NO;
-}
-
-/**
- * Shows or hides the confirm button from the main thread
- */
-- (void) hideConfirmButton:(BOOL)hidden
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.confirmButton.hidden = hidden;
     });
 }
 
